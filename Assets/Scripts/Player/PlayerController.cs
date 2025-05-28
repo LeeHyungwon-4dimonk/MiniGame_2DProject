@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] public float MoveSpeed;
     [SerializeField] public float JumpPow;
+    [SerializeField] public GameObject m_spellPrefab;
 
     public StateMachine StateMach;
     public Animator Anim;
@@ -25,7 +26,6 @@ public class PlayerController : MonoBehaviour
     public bool IsJump;
     public bool IsLand;
     public bool IsAim;
-
 
     public float MeleeAttackCoolTime;
     public float RangeAttackCoolTime;

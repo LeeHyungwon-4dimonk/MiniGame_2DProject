@@ -87,7 +87,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 3.96
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -185,13 +185,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 5
-  JumpPow: 10
+  JumpPow: 20
   Anim: {fileID: 0}
   Rigid: {fileID: 0}
   SpriteRenderer: {fileID: 0}
   InputX: {x: 0, y: 0}
+  JumpAction:
+    m_Name: Jump
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 4e1fcf2a-2424-4fed-8fec-cfef1e040919
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  MeleeAttackAction:
+    m_Name: Melee Attack
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e100e0de-9e25-4db5-9f52-800a200f250a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  RangeAttackAction:
+    m_Name: Range Attack
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 42135a35-af69-4c93-bd35-83f9f3f6e4df
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   IsMove: 0
   IsJump: 0
+  IsLand: 0
+  IsAim: 0
+  MeleeAttackCoolTime: 0
+  RangeAttackCoolTime: 0
 --- !u!114 &7211167691410437169
 MonoBehaviour:
   m_ObjectHideFlags: 0
