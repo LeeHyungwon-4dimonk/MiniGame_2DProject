@@ -28,8 +28,9 @@ public class PlayerController : MonoBehaviour
     public bool IsLand;
     public bool IsAim;
 
-    public float MeleeAttackCoolTime;
-    public float RangeAttackCoolTime;
+    public float MeleeAttackDelay;
+    public float RangeAttackDelay;
+    public float RangeAttackCoolTime = 3;
 
     private void Awake()
     {
