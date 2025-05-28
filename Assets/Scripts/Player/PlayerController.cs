@@ -32,7 +32,9 @@ public class PlayerController : MonoBehaviour
     public float RangeAttackDelay;
     public float RangeAttackCoolTime = 3;
 
-    private void Awake()
+    private void Awake() => Init();
+
+    private void Init()
     {
         Anim = GetComponent<Animator>();
         Rigid = GetComponent<Rigidbody2D>();
@@ -59,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        StateMach.Update();        
+        StateMach.Update();
     }
 
     private void FixedUpdate()
@@ -75,7 +77,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             IsJump = false;
             IsLand = true;
