@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 InputX;
     public InputAction JumpAction;
+    public InputAction MeleeAttackAction;
+    public InputAction RangeAttackAction;
+
+    public readonly int IDLE_HASH = Animator.StringToHash("Player_Idle");
 
     public bool IsMove;
     public bool IsJump;
@@ -24,6 +28,8 @@ public class PlayerController : MonoBehaviour
         Rigid = GetComponent<Rigidbody2D>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
         JumpAction = GetComponent<PlayerInput>().actions["Jump"];
+        MeleeAttackAction = GetComponent<PlayerInput>().actions["MeleeAttack"];
+        RangeAttackAction = GetComponent<PlayerInput>().actions["RangedAttack"];
         StateMachineInit();
     }
 
@@ -33,6 +39,8 @@ public class PlayerController : MonoBehaviour
         StateMach.StateDic.Add(EState.Idle, new Player_Idle(this));
         StateMach.StateDic.Add(EState.Walk, new Player_Walk(this));
         StateMach.StateDic.Add(EState.Jump, new Player_Jump(this));
+        StateMach.StateDic.Add(EState.MeleeAttack, new Player_MeleeAttack(this));
+        StateMach.StateDic.Add(EState.RangedAttack, new Player_RangeAttack(this));
 
         StateMach.CurState = StateMach.StateDic[EState.Idle];
     }

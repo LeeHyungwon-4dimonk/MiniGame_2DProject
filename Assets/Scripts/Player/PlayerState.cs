@@ -15,17 +15,31 @@ public class PlayerState : BaseState
         m_player = _player;
     }
 
-    public override void Enter() { }
+    public override void Enter()
+    {
+
+    }
 
     public override void Update()
     {
-        if(m_player.IsJump && m_player.IsLand)
+        if (/*!m_player.Anim.GetCurrentAnimatorStateInfo(0).IsName("Player_ChargeSpell")
+            && !m_player.Anim.GetCurrentAnimatorStateInfo(0).IsName("Player_SpellAttack")
+            &&*/ m_player.MeleeAttackAction.IsPressed())
+        {
+            m_player.StateMach.ChangeState(m_player.StateMach.StateDic[EState.MeleeAttack]);
+        }
+
+        if (m_player.IsJump && m_player.IsLand)
         {
             m_player.StateMach.ChangeState(m_player.StateMach.StateDic[EState.Jump]);
-        }
+        }        
     }
 
-    public override void Exit() { }
+    public override void Exit()
+    {
+        m_player.Anim.SetBool("IsMove", m_player.IsMove);
+        m_player.Anim.SetBool("IsJump", m_player.IsJump);
+    }
 }
 
 public class Player_Idle : PlayerState
@@ -38,7 +52,7 @@ public class Player_Idle : PlayerState
     public override void Enter()
     {
         m_player.IsMove = false;
-        m_player.Anim.SetBool("IsMove", m_player.IsMove);
+        m_player.Anim.Play(m_player.IDLE_HASH);
         m_player.Rigid.velocity = Vector2.zero;
     }
 
@@ -49,7 +63,7 @@ public class Player_Idle : PlayerState
         {
             m_player.IsMove = true;
             m_player.StateMach.ChangeState(m_player.StateMach.StateDic[EState.Walk]);            
-        }
+        }       
     }
 }
 
@@ -127,9 +141,27 @@ public class Player_Jump : PlayerState
     {
         m_player.Rigid.velocity = new Vector2(m_player.InputX.x * m_player.MoveSpeed, m_player.Rigid.velocity.y);
     }
+}
 
-    public override void Exit()
+public class Player_MeleeAttack : PlayerState
+{
+    public Player_MeleeAttack(PlayerController _player) : base(_player)
     {
-        
+        HasPhysics = false;
     }
+    public override void Enter()
+    {
+        m_player.Anim.SetTrigger("MeleeAttack");
+        m_player.StateMach.ChangeState(m_player.StateMach.StateDic[EState.Idle]);
+    }
+}
+
+public class Player_RangeAttack : PlayerState
+{
+    public Player_RangeAttack(PlayerController _player) : base(_player)
+    {
+        HasPhysics = false;
+    }
+
+    
 }

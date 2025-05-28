@@ -491,6 +491,14 @@ PrefabInstance:
       propertyPath: JumpAction.m_Name
       value: Jump
       objectReference: {fileID: 0}
+    - target: {fileID: 1400313764469756905, guid: 07bb92059d08f2c489b038482f4b36b1, type: 3}
+      propertyPath: MeleeAttackAction.m_Name
+      value: Melee Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400313764469756905, guid: 07bb92059d08f2c489b038482f4b36b1, type: 3}
+      propertyPath: RangeAttackAction.m_Name
+      value: Range Attack
+      objectReference: {fileID: 0}
     - target: {fileID: 1902922834224466847, guid: 07bb92059d08f2c489b038482f4b36b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.589286
