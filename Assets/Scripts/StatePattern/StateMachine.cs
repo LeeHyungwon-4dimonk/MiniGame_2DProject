@@ -21,6 +21,8 @@ public class StateMachine
         CurState.Enter();
     }
 
+    public void Update() => CurState.Update();
+
     public void FixedUpdate()
     {
         if(CurState.HasPhysics) CurState.FixedUpdate();
