@@ -6,6 +6,7 @@ public class Spell : MonoBehaviour
 {
     private Animator m_animator;
 
+
     [SerializeField] private float m_spellSpeed;
 
     private void Awake()
