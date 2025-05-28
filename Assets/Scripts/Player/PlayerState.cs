@@ -174,7 +174,6 @@ public class Player_MeleeAttack : PlayerState
     public override void Enter()
     {
         m_player.Anim.Play(m_player.MELEEATTACK_HASH);
-        m_player.IsAim = true;
     }
 
     public override void Update()
@@ -197,14 +196,13 @@ public class Player_Charge : PlayerState
     }
     public override void Enter()
     {
-        m_player.IsAim = true;
         m_player.Anim.Play(m_player.CHARGE_HASH);
     }
 
     public override void Update()
     {
         base.Update();
-        if (m_player.IsAim && m_player.RangeAttackAction.WasReleasedThisFrame())
+        if (m_player.RangeAttackAction.WasReleasedThisFrame())
         {
             m_player.StateMach.ChangeState(m_player.StateMach.StateDic[EState.RangedAttack]);
         }
@@ -230,7 +228,6 @@ public class Player_RangeAttack : PlayerState
         m_player.RangeAttackDelay += Time.deltaTime;
         if (m_player.RangeAttackDelay > 0.4f)
         {            
-            m_player.IsAim = false;
             m_player.RangeAttackDelay = 0;
             m_player.StateMach.ChangeState(m_player.StateMach.StateDic[EState.Idle]);
         }

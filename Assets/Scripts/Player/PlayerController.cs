@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
     public bool IsMove;
     public bool IsJump;
     public bool IsLand;
-    public bool IsAim;
 
     public float MeleeAttackDelay;
     public float RangeAttackDelay;
