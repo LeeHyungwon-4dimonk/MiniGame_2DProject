@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using DesignPattern;
 using UnityEngine;
 
-public class Spell : MonoBehaviour
+public class Spell : PooledObject
 {
     private Animator m_animator;
 
@@ -23,6 +24,6 @@ public class Spell : MonoBehaviour
     IEnumerator DestroyTerm()
     {
         yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
+        ReturnPool();
     }
 }
