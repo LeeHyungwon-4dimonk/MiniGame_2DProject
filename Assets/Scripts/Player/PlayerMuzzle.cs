@@ -20,12 +20,11 @@ public class PlayerMuzzle : MonoBehaviour
         m_playerSpriteRenderer = GetComponentInParent<SpriteRenderer>();
     }
 
-    private void LateUpdate()
+    public void Fire()
     {
         if (m_playerController.StateMach.CurState == m_playerController.StateMach.StateDic[EState.RangedAttack])
         {
             m_spellPrefab = Instantiate(m_spellPrefab, transform.position, Quaternion.identity);
-            m_spellCoolTimeCoroutine = StartCoroutine(SpellShootCoolTime());
             m_spellRigid = m_spellPrefab.GetComponent<Rigidbody2D>();
             m_spellSpriteRenderer = m_spellPrefab.GetComponent<SpriteRenderer>();
             if (m_playerSpriteRenderer.flipX == false)
@@ -40,12 +39,6 @@ public class PlayerMuzzle : MonoBehaviour
                 m_spellRigid.AddForce(Vector2.left * m_spellSpeed, ForceMode2D.Impulse);
                 m_spellSpriteRenderer.flipX = true;
             }
-            
         }
-    }
-
-    IEnumerator SpellShootCoolTime()
-    {
-        yield return new WaitForSeconds(2f);
     }
 }

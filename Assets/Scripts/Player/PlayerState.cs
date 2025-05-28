@@ -212,6 +212,7 @@ public class Player_RangeAttack : PlayerState
 
     public override void Enter()
     {
+        m_player.Muzzle.Fire();
         m_player.Anim.Play(m_player.SPELLATTACK_HASH);                
     }
 
@@ -220,7 +221,7 @@ public class Player_RangeAttack : PlayerState
         base.Update();
         m_player.RangeAttackCoolTime += Time.deltaTime;
         if (m_player.RangeAttackCoolTime > 0.4f)
-        {
+        {            
             m_player.IsAim = false;
             m_player.RangeAttackCoolTime = 0;
             m_player.StateMach.ChangeState(m_player.StateMach.StateDic[EState.Idle]);

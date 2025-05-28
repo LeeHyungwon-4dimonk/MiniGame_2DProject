@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public Animator Anim;
     public Rigidbody2D Rigid;
     public SpriteRenderer SpriteRenderer;
+    public PlayerMuzzle Muzzle;
 
     public Vector2 InputX;
     public InputAction JumpAction;
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
         JumpAction = GetComponent<PlayerInput>().actions["Jump"];
         MeleeAttackAction = GetComponent<PlayerInput>().actions["MeleeAttack"];
         RangeAttackAction = GetComponent<PlayerInput>().actions["RangedAttack"];
+        Muzzle = GetComponentInChildren<PlayerMuzzle>();
         StateMachineInit();
     }
 
