@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public Animator Anim;
     public Rigidbody2D Rigid;
     public SpriteRenderer SpriteRenderer;
+    public CapsuleCollider2D PlayerCollider;
     public PlayerMuzzle Muzzle;
 
     public Vector2 InputX;
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         Anim = GetComponent<Animator>();
         Rigid = GetComponent<Rigidbody2D>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
+        PlayerCollider = GetComponent<CapsuleCollider2D>();
         JumpAction = GetComponent<PlayerInput>().actions["Jump"];
         MeleeAttackAction = GetComponent<PlayerInput>().actions["MeleeAttack"];
         RangeAttackAction = GetComponent<PlayerInput>().actions["RangedAttack"];

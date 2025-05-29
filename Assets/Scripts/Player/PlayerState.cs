@@ -103,10 +103,12 @@ public class Player_Walk : PlayerState
         if(m_player.InputX.x < 0)
         {
             m_player.SpriteRenderer.flipX = true;
+            m_player.PlayerCollider.offset = new Vector2(-0.4f, 0.8f);
         }
         else if(m_player.InputX.x > 0)
         {
             m_player.SpriteRenderer.flipX = false;
+            m_player.PlayerCollider.offset = new Vector2(0.4f, 0.8f);
         }        
     }
 
