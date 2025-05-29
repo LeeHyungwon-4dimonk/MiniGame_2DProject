@@ -59,7 +59,13 @@ public class NormalMonsterState_Idle : NormalMonsterState
     public override void Update()
     {
         waitedTime += Time.deltaTime;
-        if (waitedTime > 3)
+        m_slime.Player = Physics2D.OverlapCircle(m_slime.transform.position, m_slime.m_slimeData.MonsterSight, m_slime.TargetLayer);
+        if (m_slime.Player != null)
+        {
+            m_slime.TargetTransform = m_slime.Player.transform;
+            m_slime.StateMach.ChangeState(m_slime.StateMach.StateDic[EState.Trace]);
+        }
+        else if (waitedTime > 3)
         {
             m_slime.StateMach.ChangeState(m_slime.StateMach.StateDic[EState.Walk]);
         }
