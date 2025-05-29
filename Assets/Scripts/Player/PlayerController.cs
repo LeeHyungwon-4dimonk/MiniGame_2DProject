@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
     [SerializeField] public float MoveSpeed;
     [SerializeField] public float JumpPow;
@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     public float RangeAttackDelay;
     public float RangeAttackCoolTime = 3;
 
+    public int PlayerHp;
+
     private void Awake() => Init();
 
     private void Init()
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
         MeleeAttackAction = GetComponent<PlayerInput>().actions["MeleeAttack"];
         RangeAttackAction = GetComponent<PlayerInput>().actions["RangedAttack"];
         Muzzle = GetComponentInChildren<PlayerMuzzle>();
+        PlayerHp = 10;
         StateMachineInit();
     }
 
@@ -72,6 +75,12 @@ public class PlayerController : MonoBehaviour
     {
         InputX = value.Get<Vector2>();
         InputX.Normalize();
+    }
+
+    public void TakeDamage(int damage)
+    {
+        PlayerHp -= damage;
+        if (PlayerHp < 0) PlayerHp = 0;
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

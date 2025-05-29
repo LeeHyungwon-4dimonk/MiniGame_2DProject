@@ -141,7 +141,6 @@ public class Player_Jump : PlayerState
         base.Update();
         if(m_player.IsLand)
         {
-            m_player.Anim.SetBool("IsJump", m_player.IsJump);
             m_player.StateMach.ChangeState(m_player.StateMach.StateDic[EState.Idle]);
         }
 
@@ -161,7 +160,7 @@ public class Player_Jump : PlayerState
     }
     public override void Exit()
     {
-       // m_player.Anim.SetBool("IsJump", m_player.IsJump);
+        m_player.Anim.SetBool("IsJump", m_player.IsJump);
     }
 }
 

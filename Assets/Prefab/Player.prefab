@@ -223,8 +223,8 @@ MonoBehaviour:
   IsMove: 0
   IsJump: 0
   IsLand: 0
-  IsAim: 0
-  MeleeAttackCoolTime: 0
+  MeleeAttackDelay: 0
+  RangeAttackDelay: 0
   RangeAttackCoolTime: 0
 --- !u!114 &7211167691410437169
 MonoBehaviour:
@@ -300,5 +300,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94370a85c98f0bc4c940a51f7936530b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_spellPrefab: {fileID: 6921151246214929210, guid: 2df28bb8dba3e2e4eaac868fa9c4b563, type: 3}
+  m_spellPrefab: {fileID: 8716763828042619119, guid: 2df28bb8dba3e2e4eaac868fa9c4b563, type: 3}
   m_spellSpeed: 10
