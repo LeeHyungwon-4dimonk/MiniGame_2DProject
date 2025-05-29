@@ -1,8 +1,9 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalSlimeSummoner : MonoBehaviour
+public class NormalMonsterSummoner : MonoBehaviour
 {
     [field: SerializeField] public MonsterData Data {  get; private set; }
     private GameObject _childObject;

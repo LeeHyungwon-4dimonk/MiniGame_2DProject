@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 113186782779610583}
   - component: {fileID: 2874714406450026243}
   - component: {fileID: 2088247691627676484}
+  - component: {fileID: 6813070684462694251}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -123,7 +124,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -170,3 +171,20 @@ CircleCollider2D:
   m_Offset: {x: 0.09288335, y: -0.60017025}
   serializedVersion: 2
   m_Radius: 0.8418044
+--- !u!114 &6813070684462694251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8817417464045084686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8541442ddab63f4f8543382f7e7d3fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_slimeData: {fileID: 11400000, guid: 2792b85facf304543bba55f4259fbbd8, type: 2}
+  Rigid: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  Anim: {fileID: 0}
+  IsMove: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4170300241755569171}
   - component: {fileID: 4158508375468362478}
   m_Layer: 0
-  m_Name: Normal Slime
+  m_Name: MonsterSummoner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Normal Slime
   m_EditorClassIdentifier: 
   Name: Normal Slime
-  Description: 
   Prefab: {fileID: 8817417464045084686, guid: 9fefe569fb8af034aa150849da075460, type: 3}
   MonsterHp: 5
   MonsterAtk: 2
+  MonsterMoveSpeed: 3
+  MonsterSight: 3
