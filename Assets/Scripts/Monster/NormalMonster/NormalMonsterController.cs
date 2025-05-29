@@ -4,6 +4,7 @@ using UnityEngine;
 public class NormalMonsterController : MonoBehaviour,IDamageable
 {
     [SerializeField] public NormalMonsterData m_slimeData;
+    [SerializeField] public LayerMask TargetLayer;
     [SerializeField] public LayerMask GroundLayer;
 
     public StateMachine StateMach;
@@ -14,7 +15,10 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
     public readonly int IDLE_HASH = Animator.StringToHash("Slime_Idle");
     public readonly int MELEEATTACK_HASH = Animator.StringToHash("Slime_Attack");
 
+    public Transform TargetTransform;
     public bool IsMove;
+    public Collider2D Player;
+    public float AttackDelay;
 
     public Vector2 PatrolVec;
 
@@ -34,6 +38,7 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
         StateMach = new StateMachine();
         StateMach.StateDic.Add(EState.Idle, new NormalMonsterState_Idle(this));
         StateMach.StateDic.Add(EState.Walk, new NormalMonsterState_Walk(this));
+        StateMach.StateDic.Add(EState.Trace, new NormalMonsterState_Trace(this));
         StateMach.StateDic.Add(EState.MeleeAttack, new NormalMonsterState_MeleeAttack(this));
 
         StateMach.CurState = StateMach.StateDic[EState.Idle];
