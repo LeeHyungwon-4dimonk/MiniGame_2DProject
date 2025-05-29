@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 1058643129}
   - component: {fileID: 1058643128}
   - component: {fileID: 1058643130}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3016,11 +3016,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4170300241755569171, guid: 1266ec9ed7b2155478279a8e2079623f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.6
+      value: 2.19
       objectReference: {fileID: 0}
     - target: {fileID: 4170300241755569171, guid: 1266ec9ed7b2155478279a8e2079623f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.46
+      value: 1.61
       objectReference: {fileID: 0}
     - target: {fileID: 4170300241755569171, guid: 1266ec9ed7b2155478279a8e2079623f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4407,7 +4407,7 @@ GameObject:
   - component: {fileID: 1427851868}
   - component: {fileID: 1427851870}
   - component: {fileID: 1427851869}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4834,7 +4834,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

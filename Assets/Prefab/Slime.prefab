@@ -184,7 +184,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_slimeData: {fileID: 11400000, guid: 2792b85facf304543bba55f4259fbbd8, type: 2}
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 256
   Rigid: {fileID: 0}
   SpriteRenderer: {fileID: 0}
   Anim: {fileID: 0}
   IsMove: 0
+  PatrolVec: {x: 0, y: 0}

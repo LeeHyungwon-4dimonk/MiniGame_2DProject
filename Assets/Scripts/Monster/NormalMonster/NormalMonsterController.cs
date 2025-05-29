@@ -4,6 +4,7 @@ using UnityEngine;
 public class NormalMonsterController : MonoBehaviour,IDamageable
 {
     [SerializeField] public NormalMonsterData m_slimeData;
+    [SerializeField] public LayerMask GroundLayer;
 
     public StateMachine StateMach;
     public Rigidbody2D Rigid;
@@ -11,8 +12,11 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
     public Animator Anim;
 
     public readonly int IDLE_HASH = Animator.StringToHash("Slime_Idle");
+    public readonly int MELEEATTACK_HASH = Animator.StringToHash("Slime_Attack");
 
     public bool IsMove;
+
+    public Vector2 PatrolVec;
 
     private void Awake() => Init();
 
@@ -21,6 +25,7 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
         Rigid = GetComponent<Rigidbody2D>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
         Anim = GetComponent<Animator>();
+        PatrolVec = Vector2.right;
         StateMachineInit();
     }
 
