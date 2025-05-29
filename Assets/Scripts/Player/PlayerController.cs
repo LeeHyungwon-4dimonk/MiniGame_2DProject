@@ -87,11 +87,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            IsJump = false;
-            IsLand = true;
-            Anim.SetBool("IsJump", IsJump);
-        }
+        IsJump = false;
+        IsLand = true;
+        Anim.SetBool("IsJump", IsJump);
     }
 }

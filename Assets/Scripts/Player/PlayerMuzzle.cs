@@ -28,8 +28,7 @@ public class PlayerMuzzle : MonoBehaviour
     {
         if (m_playerController.StateMach.CurState == m_playerController.StateMach.StateDic[EState.RangedAttack])
         {
-            PooledObject spell = m_spellPool.PopPool() as Spell;            
-            //m_spellPrefab = Instantiate(m_spellPrefab);
+            PooledObject spell = m_spellPool.PopPool() as Spell;
             m_spellRigid = spell.GetComponent<Rigidbody2D>();
             m_spellSpriteRenderer = spell.GetComponent<SpriteRenderer>();
             if (m_playerSpriteRenderer.flipX == false)
