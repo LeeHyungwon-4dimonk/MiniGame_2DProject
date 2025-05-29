@@ -168,9 +168,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.09288335, y: -0.60017025}
+  m_Offset: {x: 0.09288335, y: 0.8155171}
   serializedVersion: 2
-  m_Radius: 0.8418044
+  m_Radius: 0.7640194
 --- !u!114 &6813070684462694251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,4 +196,5 @@ MonoBehaviour:
   TargetTransform: {fileID: 0}
   IsMove: 0
   Player: {fileID: 0}
+  AttackDelay: 0
   PatrolVec: {x: 0, y: 0}
