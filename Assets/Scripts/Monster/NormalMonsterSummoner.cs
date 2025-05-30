@@ -16,5 +16,4 @@ public class NormalMonsterSummoner : MonoBehaviour
     {
         Destroy(_childObject);
     }
-
 }
