@@ -179,24 +179,3 @@ public class NormalMonsterState_MeleeAttack : NormalMonsterState
         }
     }
 }
-
-public class NormalMonsterState_Die : NormalMonsterState
-{
-    public NormalMonsterState_Die(NormalMonsterController _slime) : base(_slime)
-    {
-        HasPhysics = false;
-    }
-    public override void Enter()
-    {
-        m_slime.Anim.Play(m_slime.DIE_HASH);
-    }
-    public override void Update()
-    {
-        float DieAnimPlayTime = 0;
-        DieAnimPlayTime += Time.deltaTime;
-        if(DieAnimPlayTime > 1.2f)
-        {
-            m_slime.gameObject.SetActive(false);
-        }
-    }
-}
