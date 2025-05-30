@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     public SpriteRenderer SpriteRenderer;
     public CapsuleCollider2D PlayerCollider;
     public PlayerMuzzle Muzzle;
+    public SFXController SFXCtrl;
+
 
     public Vector2 InputX;
     public InputAction JumpAction;
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         MeleeAttackAction = GetComponent<PlayerInput>().actions["MeleeAttack"];
         RangeAttackAction = GetComponent<PlayerInput>().actions["RangedAttack"];
         Muzzle = GetComponentInChildren<PlayerMuzzle>();
+        SFXCtrl = GetComponent<SFXController>();
         m_playerMaxHp = 10;
         m_playerHp = m_playerMaxHp;
 

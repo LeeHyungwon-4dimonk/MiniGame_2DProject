@@ -115,6 +115,7 @@ public class Player_Walk : PlayerState
     public override void FixedUpdate()
     {
         m_player.Rigid.velocity = new Vector2(m_player.InputX.x * m_player.MoveSpeed, m_player.Rigid.velocity.y);
+        //m_player.SFXCtrl.PlaySFX("FootStep");
     }
 
     public override void Exit()
@@ -175,6 +176,7 @@ public class Player_MeleeAttack : PlayerState
     public override void Enter()
     {
         m_player.Anim.Play(m_player.MELEEATTACK_HASH);
+        m_player.SFXCtrl.PlaySFX("Sword");
     }
 
     public override void Update()
@@ -220,7 +222,8 @@ public class Player_RangeAttack : PlayerState
     public override void Enter()
     {
         m_player.Muzzle.Fire();
-        m_player.Anim.Play(m_player.SPELLATTACK_HASH);                
+        m_player.Anim.Play(m_player.SPELLATTACK_HASH);
+        m_player.SFXCtrl.PlaySFX("RangeAttack");
     }
 
     public override void Update()
