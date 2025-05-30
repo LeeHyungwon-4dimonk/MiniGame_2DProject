@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class NormalMonsterState : BaseState
@@ -107,7 +108,7 @@ public class NormalMonsterState_Walk : NormalMonsterState
 
     public override void FixedUpdate()
     {
-        m_slime.Rigid.velocity = m_slime.PatrolVec * m_slime.m_slimeData.MonsterMoveSpeed;
+        m_slime.Rigid.velocity = new Vector2(m_slime.PatrolVec.x * m_slime.m_slimeData.MonsterMoveSpeed, m_slime.Rigid.velocity.y);
     }
 }
 
@@ -151,7 +152,7 @@ public class NormalMonsterState_Trace : NormalMonsterState
 
     public override void FixedUpdate()
     {
-        m_slime.Rigid.velocity = targetPos * m_slime.m_slimeData.MonsterMoveSpeed;
+        m_slime.Rigid.velocity = new Vector2(targetPos.x * m_slime.m_slimeData.MonsterMoveSpeed, m_slime.Rigid.velocity.y);
     }
 }
 
@@ -169,11 +170,33 @@ public class NormalMonsterState_MeleeAttack : NormalMonsterState
     public override void Update()
     {
         base.Update();
+        m_slime.Rigid.velocity = Vector2.zero;
         m_slime.AttackDelay += Time.deltaTime;
         if (m_slime.AttackDelay > 1.5f)
         {
             m_slime.AttackDelay = 0;
             m_slime.StateMach.ChangeState(m_slime.StateMach.StateDic[EState.Idle]);
+        }
+    }
+}
+
+public class NormalMonsterState_Die : NormalMonsterState
+{
+    public NormalMonsterState_Die(NormalMonsterController _slime) : base(_slime)
+    {
+        HasPhysics = false;
+    }
+    public override void Enter()
+    {
+        m_slime.Anim.Play(m_slime.DIE_HASH);
+    }
+    public override void Update()
+    {
+        float DieAnimPlayTime = 0;
+        DieAnimPlayTime += Time.deltaTime;
+        if(DieAnimPlayTime > 1.2f)
+        {
+            m_slime.gameObject.SetActive(false);
         }
     }
 }

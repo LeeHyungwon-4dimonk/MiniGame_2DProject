@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     public readonly int MELEEATTACK_HASH = Animator.StringToHash("Player_MeleeAttack");
     public readonly int CHARGE_HASH = Animator.StringToHash("Player_ChargeSpell");
     public readonly int SPELLATTACK_HASH = Animator.StringToHash("Player_SpellAttack");
+    public readonly int DIE_HASH = Animator.StringToHash("Player_Die");
+
+    public bool IsControlActive;
 
     public bool IsMove;
     public bool IsJump;
@@ -49,6 +52,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         RangeAttackAction = GetComponent<PlayerInput>().actions["RangedAttack"];
         Muzzle = GetComponentInChildren<PlayerMuzzle>();
         PlayerHp = 10;
+        IsControlActive = true;
         StateMachineInit();
     }
 
@@ -61,6 +65,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         StateMach.StateDic.Add(EState.MeleeAttack, new Player_MeleeAttack(this));
         StateMach.StateDic.Add(EState.Charge, new Player_Charge(this));
         StateMach.StateDic.Add(EState.RangedAttack, new Player_RangeAttack(this));
+        StateMach.StateDic.Add(EState.Die, new Player_Die(this));
 
         StateMach.CurState = StateMach.StateDic[EState.Idle];
     }
@@ -87,7 +92,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (PlayerHp < 0)
         { 
             PlayerHp = 0;
-            gameObject.SetActive(false);
+            StateMach.ChangeState(StateMach.StateDic[EState.Die]);
+            IsControlActive = false;
         }
     }
 
@@ -97,7 +103,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         Monster = Physics2D.OverlapCircle(transform.position, 1f, m_layerMask);
         if (Monster != null)
         {
-            Monster.GetComponent<IDamageable>().TakeDamage(m_playerMeleeAttack);
+            Monster.GetComponent<IDamageable>().TakeDamage(m_playerMeleeAttack);            
         }
     }
 

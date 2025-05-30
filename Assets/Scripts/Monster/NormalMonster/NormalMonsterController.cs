@@ -14,6 +14,7 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
 
     public readonly int IDLE_HASH = Animator.StringToHash("Slime_Idle");
     public readonly int MELEEATTACK_HASH = Animator.StringToHash("Slime_Attack");
+    public readonly int DIE_HASH = Animator.StringToHash("Slime_Die");
 
     public Transform TargetTransform;
     public bool IsMove;
@@ -63,7 +64,6 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
         if (m_MonsterHp < 0)
         {
             m_MonsterHp = 0;
-            Debug.Log("ав╬З╫ю╢о╢ы");
             gameObject.SetActive(false);
         }
     }
