@@ -35,7 +35,6 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public float MeleeAttackDelay;
     public float RangeAttackDelay;
-    public float RangeAttackCoolTime = 3;
 
     public int PlayerHp;
 

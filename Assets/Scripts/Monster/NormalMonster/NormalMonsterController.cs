@@ -64,6 +64,7 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
         if (m_MonsterHp < 0)
         {
             m_MonsterHp = 0;
+            GameManager.Instance.ScorePlus(100);
             gameObject.SetActive(false);
         }
     }
