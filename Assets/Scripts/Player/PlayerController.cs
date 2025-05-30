@@ -5,7 +5,9 @@ public class PlayerController : MonoBehaviour, IDamageable
 {
     [SerializeField] public float MoveSpeed;
     [SerializeField] public float JumpPow;
-    [SerializeField] public GameObject m_spellPrefab;
+
+    [SerializeField] private int m_playerMeleeAttack;
+    [SerializeField] private LayerMask m_layerMask;
 
     public StateMachine StateMach;
     public Animator Anim;
@@ -82,7 +84,21 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         PlayerHp -= damage;
-        if (PlayerHp < 0) PlayerHp = 0;
+        if (PlayerHp < 0)
+        { 
+            PlayerHp = 0;
+            gameObject.SetActive(false);
+        }
+    }
+
+    public void Attack()
+    {
+        Collider2D Monster;
+        Monster = Physics2D.OverlapCircle(transform.position, 1f, m_layerMask);
+        if (Monster != null)
+        {
+            Monster.GetComponent<IDamageable>().TakeDamage(m_playerMeleeAttack);
+        }
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

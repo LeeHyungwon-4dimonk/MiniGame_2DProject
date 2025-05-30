@@ -20,6 +20,10 @@ public class Spell : PooledObject
     {
         m_rigid.velocity = Vector2.zero;
         m_animator.SetTrigger("Burst");
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<IDamageable>().TakeDamage(3);
+        }
         StartCoroutine(DestroyTerm());
     }
 

@@ -20,6 +20,8 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
     public Collider2D Player;
     public float AttackDelay;
 
+    private float m_MonsterHp;
+
     public Vector2 PatrolVec;
 
     private void Awake() => Init();
@@ -30,6 +32,7 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
         SpriteRenderer = GetComponent<SpriteRenderer>();
         Anim = GetComponent<Animator>();
         PatrolVec = Vector2.right;
+        m_MonsterHp = m_slimeData.MonsterHp;
         StateMachineInit();
     }
 
@@ -56,7 +59,21 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
 
     public void TakeDamage(int damage)
     {
-        m_slimeData.MonsterHp -= damage;
-        if(m_slimeData.MonsterHp < 0) m_slimeData.MonsterHp = 0;
+        m_MonsterHp-= damage;
+        if (m_MonsterHp < 0)
+        {
+            m_MonsterHp = 0;
+            Debug.Log("ав╬З╫ю╢о╢ы");
+            gameObject.SetActive(false);
+        }
+    }
+
+    public void Attack()
+    {
+        Player = Physics2D.OverlapCircle(transform.position, 1f, TargetLayer);
+        if (Player != null)
+        {
+            Player.GetComponent<IDamageable>().TakeDamage(m_slimeData.MonsterAtk);
+        }
     }
 }

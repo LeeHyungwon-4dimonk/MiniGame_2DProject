@@ -70,8 +70,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.3669834, y: 0.8055732}
-  m_Size: {x: 0.76852417, y: 1.7518687}
+  m_Offset: {x: 0.4, y: 0.8}
+  m_Size: {x: 0.8, y: 1.8}
   m_Direction: 0
 --- !u!50 &3647177842318570515
 Rigidbody2D:
@@ -187,10 +187,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 5
   JumpPow: 20
-  m_spellPrefab: {fileID: 0}
+  m_playerMeleeAttack: 3
+  m_layerMask:
+    serializedVersion: 2
+    m_Bits: 512
   Anim: {fileID: 0}
   Rigid: {fileID: 0}
   SpriteRenderer: {fileID: 0}
+  PlayerCollider: {fileID: 0}
   Muzzle: {fileID: 0}
   InputX: {x: 0, y: 0}
   JumpAction:
@@ -226,6 +230,7 @@ MonoBehaviour:
   MeleeAttackDelay: 0
   RangeAttackDelay: 0
   RangeAttackCoolTime: 0
+  PlayerHp: 0
 --- !u!114 &7211167691410437169
 MonoBehaviour:
   m_ObjectHideFlags: 0
