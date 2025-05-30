@@ -91,6 +91,7 @@ public class NormalMonsterState_Walk : NormalMonsterState
         base.Update();
         Vector2 rayOrigin = m_slime.transform.position + new Vector3(m_slime.PatrolVec.x, 0);
         RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, 3f, m_slime.GroundLayer);
+        Debug.DrawRay(rayOrigin, Vector2.down, Color.red, 0.01f);
         if (hit.collider == null)
         {
             m_slime.SpriteRenderer.flipX = !m_slime.SpriteRenderer.flipX;

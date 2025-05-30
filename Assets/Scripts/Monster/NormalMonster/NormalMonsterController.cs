@@ -21,7 +21,7 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
     public Collider2D Player;
     public float AttackDelay;
 
-    private float m_MonsterHp;
+    private float m_monsterHp;
 
     public Vector2 PatrolVec;
 
@@ -33,7 +33,7 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
         SpriteRenderer = GetComponent<SpriteRenderer>();
         Anim = GetComponent<Animator>();
         PatrolVec = Vector2.right;
-        m_MonsterHp = m_slimeData.MonsterHp;
+        m_monsterHp = m_slimeData.MonsterHp;
         StateMachineInit();
     }
 
@@ -70,10 +70,10 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
 
     public void TakeDamage(int damage)
     {
-        m_MonsterHp -= damage;       
-        if (m_MonsterHp <= 0)
+        m_monsterHp -= damage;       
+        if (m_monsterHp <= 0)
         {
-            m_MonsterHp = 0;
+            m_monsterHp = 0;
             GameManager.Instance.ScorePlus(100);
             gameObject.SetActive(false);
         }
