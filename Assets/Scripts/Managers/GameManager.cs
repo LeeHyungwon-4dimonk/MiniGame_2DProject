@@ -7,6 +7,7 @@ public class GameManager : Singleton<GameManager>
 {
     private static float m_playerSpellCoolTime = 0;
     private static int m_score;
+    private static bool m_GameOver = false;
 
     private void Awake() => Init();
 
@@ -26,6 +27,7 @@ public class GameManager : Singleton<GameManager>
         return m_score;
     }
 
+    #region PlayerCoolTime
 
     public void SetCoolTime()
     {
@@ -41,5 +43,18 @@ public class GameManager : Singleton<GameManager>
     public float GetCoolTime()
     {
         return m_playerSpellCoolTime;
+    }
+    #endregion
+       
+
+    public void GameOver()
+    {
+        Debug.Log("Game Over");
+        m_GameOver = true;
+    }
+
+    public bool IsGameOver()
+    {
+        return m_GameOver;
     }
 }

@@ -96,7 +96,7 @@ public class NormalMonsterState_Walk : NormalMonsterState
             m_slime.SpriteRenderer.flipX = !m_slime.SpriteRenderer.flipX;
             m_slime.StateMach.ChangeState(m_slime.StateMach.StateDic[EState.Idle]);
         }
-        Vector2 rayOrigin2 = m_slime.transform.position + new Vector3(m_slime.PatrolVec.x, 1);
+        Vector2 rayOrigin2 = m_slime.transform.position + new Vector3(m_slime.PatrolVec.x, 0);
         RaycastHit2D hit2 = Physics2D.Raycast(rayOrigin2, m_slime.PatrolVec, 0.5f, m_slime.GroundLayer);
         if (!(hit2.collider == null))
         {

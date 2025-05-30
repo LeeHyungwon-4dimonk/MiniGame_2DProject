@@ -27,8 +27,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     public readonly int SPELLATTACK_HASH = Animator.StringToHash("Player_SpellAttack");
     public readonly int DIE_HASH = Animator.StringToHash("Player_Die");
 
-    public bool IsControlActive;
-
     public bool IsMove;
     public bool IsJump;
     public bool IsLand;
@@ -51,7 +49,6 @@ public class PlayerController : MonoBehaviour, IDamageable
         RangeAttackAction = GetComponent<PlayerInput>().actions["RangedAttack"];
         Muzzle = GetComponentInChildren<PlayerMuzzle>();
         PlayerHp = 10;
-        IsControlActive = true;
         StateMachineInit();
     }
 
@@ -71,12 +68,18 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        StateMach.Update();
+        if (!GameManager.Instance.IsGameOver())
+        {
+            StateMach.Update();
+        }
     }
 
     private void FixedUpdate()
     {
-        StateMach.FixedUpdate();
+        if (!GameManager.Instance.IsGameOver())
+        {
+            StateMach.FixedUpdate();
+        }
     }
 
     public void OnMove(InputValue value)
@@ -88,18 +91,18 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         PlayerHp -= damage;
-        if (PlayerHp < 0)
+        Debug.Log("¾Æ¾ß");
+        if (PlayerHp <= 0)
         { 
             PlayerHp = 0;
             StateMach.ChangeState(StateMach.StateDic[EState.Die]);
-            IsControlActive = false;
         }
     }
 
     public void Attack()
     {
         Collider2D Monster;
-        Monster = Physics2D.OverlapCircle(transform.position, 1f, m_layerMask);
+        Monster = Physics2D.OverlapCircle(transform.position, 1.5f, m_layerMask);
         if (Monster != null)
         {
             Monster.GetComponent<IDamageable>().TakeDamage(m_playerMeleeAttack);            

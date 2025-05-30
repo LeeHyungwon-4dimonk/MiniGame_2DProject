@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7211167691410437169}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,8 +70,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.4, y: 0.8}
-  m_Size: {x: 0.8, y: 1.8}
+  m_Offset: {x: 0.22190511, y: 0.847895}
+  m_Size: {x: 1.1561897, y: 1.70421}
   m_Direction: 0
 --- !u!50 &3647177842318570515
 Rigidbody2D:
@@ -224,12 +224,12 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  IsControlActive: 0
   IsMove: 0
   IsJump: 0
   IsLand: 0
   MeleeAttackDelay: 0
   RangeAttackDelay: 0
-  RangeAttackCoolTime: 0
   PlayerHp: 0
 --- !u!114 &7211167691410437169
 MonoBehaviour:

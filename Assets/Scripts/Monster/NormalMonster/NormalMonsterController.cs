@@ -50,18 +50,28 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
 
     private void Update()
     {
-        StateMach.Update();
+        if (!GameManager.Instance.IsGameOver())
+        {
+            StateMach.Update();
+        }
+        else
+        {
+            StateMach.ChangeState(StateMach.StateDic[EState.Idle]);
+        }
     }
 
     private void FixedUpdate()
     {
-        StateMach.FixedUpdate();
+        if (!GameManager.Instance.IsGameOver())
+        {
+            StateMach.FixedUpdate();
+        }
     }
 
     public void TakeDamage(int damage)
     {
-        m_MonsterHp-= damage;
-        if (m_MonsterHp < 0)
+        m_MonsterHp -= damage;       
+        if (m_MonsterHp <= 0)
         {
             m_MonsterHp = 0;
             GameManager.Instance.ScorePlus(100);

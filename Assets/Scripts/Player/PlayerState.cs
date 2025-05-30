@@ -17,8 +17,6 @@ public class PlayerState : BaseState
 
     public override void Update()
     {
-        if (!m_player.IsControlActive) return;
-
         if(m_player.StateMach.CurState != m_player.StateMach.StateDic[EState.Charge]
             && m_player.StateMach.CurState != m_player.StateMach.StateDic[EState.RangedAttack])
         {
@@ -247,5 +245,6 @@ public class Player_Die : PlayerState
     public override void Enter()
     {
         m_player.Anim.Play(m_player.DIE_HASH);
+        GameManager.Instance.GameOver();
     }
 }
