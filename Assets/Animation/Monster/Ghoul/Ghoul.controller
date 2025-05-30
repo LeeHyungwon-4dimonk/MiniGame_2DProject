@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ac0ccb8d38f316c41a943c94dcb0fad8, type: 2}
+  m_Motion: {fileID: 7400000, guid: fbb8ac6481a5b0340a3db827a53ff6dc, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -72,7 +72,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 9613470dedcfa154a9b42553ab06ca51, type: 2}
+  m_Motion: {fileID: 7400000, guid: bb76b4f4894f82c46b47958f4e278fab, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -84,7 +84,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Slime
+  m_Name: Ghoul
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsMove
@@ -152,7 +152,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a6f6dd51656d57e489ac46ab3289e219, type: 2}
+  m_Motion: {fileID: 7400000, guid: 7ffb1c317f53f6a4795ae3660ff56305, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
