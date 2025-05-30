@@ -1234,6 +1234,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4134563991569188721, guid: 07bb92059d08f2c489b038482f4b36b1, type: 3}
+      propertyPath: m_sfx.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4134563991569188721, guid: 07bb92059d08f2c489b038482f4b36b1, type: 3}
+      propertyPath: m_sfx.Array.data[3].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 531eaa4708a964f48a9b94242a75d58b, type: 3}
+    - target: {fileID: 4134563991569188721, guid: 07bb92059d08f2c489b038482f4b36b1, type: 3}
+      propertyPath: m_sfx.Array.data[3].Name
+      value: Jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 4134563991569188721, guid: 07bb92059d08f2c489b038482f4b36b1, type: 3}
+      propertyPath: m_sfx.Array.data[4].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 29e14d79745dc4f43869c423e2ada906, type: 3}
+    - target: {fileID: 4134563991569188721, guid: 07bb92059d08f2c489b038482f4b36b1, type: 3}
+      propertyPath: m_sfx.Array.data[4].Name
+      value: Charge
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
