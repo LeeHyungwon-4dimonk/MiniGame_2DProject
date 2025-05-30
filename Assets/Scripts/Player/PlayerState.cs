@@ -17,6 +17,7 @@ public class PlayerState : BaseState
 
     public override void Update()
     {
+        
         if(m_player.StateMach.CurState != m_player.StateMach.StateDic[EState.Charge]
             && m_player.StateMach.CurState != m_player.StateMach.StateDic[EState.RangedAttack])
         {
@@ -42,6 +43,7 @@ public class PlayerState : BaseState
             && !m_player.Anim.GetCurrentAnimatorStateInfo(0).IsName("Player_SpellAttack")
             && m_player.JumpAction.IsPressed() && m_player.IsLand)
         {
+            m_player.SFXCtrl.StopSFX();
             m_player.StateMach.ChangeState(m_player.StateMach.StateDic[EState.Jump]);
         }        
     }
@@ -89,6 +91,7 @@ public class Player_Walk : PlayerState
     public override void Enter()
     {
         m_player.Anim.SetBool("IsMove", m_player.IsMove);
+        m_player.SFXCtrl.LoopSFX("FootStep");
     }
 
     public override void Update()
@@ -97,6 +100,7 @@ public class Player_Walk : PlayerState
         if(Mathf.Abs(m_player.InputX.x) < 0.1f)
         {
             m_player.IsMove = false;
+            m_player.SFXCtrl.StopSFX();
             m_player.StateMach.ChangeState(m_player.StateMach.StateDic[EState.Idle]);            
         }
 
@@ -114,8 +118,7 @@ public class Player_Walk : PlayerState
 
     public override void FixedUpdate()
     {
-        m_player.Rigid.velocity = new Vector2(m_player.InputX.x * m_player.MoveSpeed, m_player.Rigid.velocity.y);
-        //m_player.SFXCtrl.PlaySFX("FootStep");
+        m_player.Rigid.velocity = new Vector2(m_player.InputX.x * m_player.MoveSpeed, m_player.Rigid.velocity.y);        
     }
 
     public override void Exit()
@@ -136,6 +139,7 @@ public class Player_Jump : PlayerState
         m_player.IsLand = false; 
         m_player.IsJump = true;
         m_player.Anim.SetBool("IsJump", m_player.IsJump);
+        m_player.SFXCtrl.PlaySFX("Jump");
         m_player.Rigid.AddForce(Vector2.up * m_player.JumpPow, ForceMode2D.Impulse);
     }
 
@@ -200,6 +204,7 @@ public class Player_Charge : PlayerState
     public override void Enter()
     {
         m_player.Anim.Play(m_player.CHARGE_HASH);
+        m_player.SFXCtrl.LoopSFX("Charge");
     }
 
     public override void Update()
@@ -207,6 +212,7 @@ public class Player_Charge : PlayerState
         base.Update();
         if (m_player.RangeAttackAction.WasReleasedThisFrame())
         {
+            m_player.SFXCtrl.StopSFX();
             m_player.StateMach.ChangeState(m_player.StateMach.StateDic[EState.RangedAttack]);
         }
     }
