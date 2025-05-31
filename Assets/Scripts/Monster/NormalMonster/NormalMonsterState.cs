@@ -14,6 +14,7 @@ public class NormalMonsterState : BaseState
 
     public override void Update()
     {
+        if(!m_slime.IsDead && !m_slime.IsStun)
         DetectPlayer();
     }
 
@@ -146,14 +147,7 @@ public class NormalMonsterState_Trace : NormalMonsterState
             targetPos = Vector2.left;
         }
         if(m_slime.TargetTransform.position.x - m_slime.transform.position.x < 0.5)
-        {
-            // 사운드 타이밍 안맞음 이슈로 사용 보류
-            
-            //if (m_slime.SFXCtrl != null)
-            //{
-            //    m_slime.SFXCtrl.LoopSFX("Attack");
-            //}
-            
+        {            
             m_slime.StateMach.ChangeState(m_slime.StateMach.StateDic[EState.MeleeAttack]);
         }
     }
@@ -183,11 +177,64 @@ public class NormalMonsterState_MeleeAttack : NormalMonsterState
         m_slime.AttackDelay += Time.deltaTime;
         if (m_slime.AttackDelay > 1.5f)
         {
-            m_slime.AttackDelay = 0;
-            
-            //if(m_slime.SFXCtrl != null)
-            //{ m_slime.SFXCtrl.StopSFX(); }           
+            m_slime.AttackDelay = 0;                   
             m_slime.StateMach.ChangeState(m_slime.StateMach.StateDic[EState.Idle]);
+        }
+    }
+}
+
+public class NormalMonsterState_Stun : NormalMonsterState
+{
+    public NormalMonsterState_Stun(NormalMonsterController _slime) : base(_slime)
+    {
+        HasPhysics = false;
+    }
+    public override void Enter()
+    {
+        m_slime.Anim.Play(m_slime.IDLE_HASH);
+        m_slime.IsStun = true;
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        
+        m_slime.Rigid.velocity = Vector2.zero;
+        m_slime.StunDelay += Time.deltaTime;
+        if (m_slime.StunDelay > 0.4f)
+        {
+            m_slime.StunDelay = 0;
+            m_slime.IsStun = false;
+            m_slime.StateMach.ChangeState(m_slime.StateMach.StateDic[EState.Idle]);
+        }
+    }
+}
+
+public class NormalMonsterState_Die : NormalMonsterState
+{
+    public NormalMonsterState_Die(NormalMonsterController _slime) : base(_slime)
+    {
+        HasPhysics = false;
+    }
+    public override void Enter()
+    {
+        m_slime.IsDead = true;
+        m_slime.Anim.SetBool("IsDead", m_slime.IsDead);
+        m_slime.Rigid.velocity = Vector2.zero;
+        m_slime.Rigid.gravityScale = 0;       
+        CapsuleCollider2D collider2D;
+        m_slime.TryGetComponent<CapsuleCollider2D>(out collider2D);
+        if (collider2D != null) { collider2D.enabled = false; }
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        
+        m_slime.DieDelay += Time.deltaTime;
+        if (m_slime.DieDelay > 2f)
+        {
+            m_slime.ReturnPool();
         }
     }
 }

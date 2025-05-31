@@ -17,7 +17,7 @@ public abstract class BaseState
 
 public enum EState
 {
-    Idle, Walk, Jump, MeleeAttack, Charge, RangedAttack, Die,
+    Idle, Walk, Jump, MeleeAttack, Charge, RangedAttack, Die, Stun,
     
     Trace
 }

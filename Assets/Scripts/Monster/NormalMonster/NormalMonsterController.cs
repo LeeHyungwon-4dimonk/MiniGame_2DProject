@@ -21,10 +21,12 @@ public class NormalMonsterController : PooledObject, IDamageable
 
     public Transform TargetTransform;
     public bool IsMove;
+    public bool IsStun;
+    public bool IsDead;
     public Collider2D Player;
     public float AttackDelay;
-
-    private Coroutine m_coroutine;
+    public float StunDelay;
+    public float DieDelay;
 
     private float m_monsterHp;
 
@@ -50,6 +52,8 @@ public class NormalMonsterController : PooledObject, IDamageable
         StateMach.StateDic.Add(EState.Walk, new NormalMonsterState_Walk(this));
         StateMach.StateDic.Add(EState.Trace, new NormalMonsterState_Trace(this));
         StateMach.StateDic.Add(EState.MeleeAttack, new NormalMonsterState_MeleeAttack(this));
+        StateMach.StateDic.Add(EState.Stun, new NormalMonsterState_Stun(this));
+        StateMach.StateDic.Add(EState.Die, new NormalMonsterState_Die(this));
 
         StateMach.CurState = StateMach.StateDic[EState.Idle];
     }
@@ -76,22 +80,15 @@ public class NormalMonsterController : PooledObject, IDamageable
 
     public void TakeDamage(int damage)
     {
-        SFXCtrl.PlaySFX("Damage");
+        Debug.Log("¾ÆÆÄ");
         m_monsterHp -= damage;
+        SFXCtrl.PlaySFX("Damage");
+        StateMach.ChangeState(StateMach.StateDic[EState.Stun]);
         if (m_monsterHp <= 0)
         {
-            StateMach.ChangeState(StateMach.StateDic[EState.Idle]);
             m_monsterHp = 0;
             GameManager.Instance.ScorePlus(100);
-            if (m_coroutine != null)
-            {
-                StopCoroutine(m_coroutine);
-                m_coroutine = null;
-            }
-            if (m_coroutine == null)
-            {
-                m_coroutine = StartCoroutine(Die());
-            }
+            StateMach.ChangeState(StateMach.StateDic[EState.Die]);
         }
     }
 
@@ -102,10 +99,5 @@ public class NormalMonsterController : PooledObject, IDamageable
         {
             Player.GetComponent<IDamageable>().TakeDamage(m_slimeData.MonsterAtk);
         }
-    }
-    IEnumerator Die()
-    {
-        yield return new WaitForSeconds(0.4f);
-        ReturnPool();
     }
 }
