@@ -148,12 +148,12 @@ public class NormalMonsterState_Trace : NormalMonsterState
         if(m_slime.TargetTransform.position.x - m_slime.transform.position.x < 0.5)
         {
             // 사운드 타이밍 안맞음 이슈로 사용 보류
-            /*
-            if (m_slime.SFXCtrl != null)
-            {
-                m_slime.SFXCtrl.LoopSFX("Attack");
-            }
-            */
+            
+            //if (m_slime.SFXCtrl != null)
+            //{
+            //    m_slime.SFXCtrl.LoopSFX("Attack");
+            //}
+            
             m_slime.StateMach.ChangeState(m_slime.StateMach.StateDic[EState.MeleeAttack]);
         }
     }
@@ -184,9 +184,9 @@ public class NormalMonsterState_MeleeAttack : NormalMonsterState
         if (m_slime.AttackDelay > 1.5f)
         {
             m_slime.AttackDelay = 0;
-            /*
-            if(m_slime.SFXCtrl != null)
-            { m_slime.SFXCtrl.StopSFX(); }   */         
+            
+            //if(m_slime.SFXCtrl != null)
+            //{ m_slime.SFXCtrl.StopSFX(); }           
             m_slime.StateMach.ChangeState(m_slime.StateMach.StateDic[EState.Idle]);
         }
     }

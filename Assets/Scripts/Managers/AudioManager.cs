@@ -58,9 +58,9 @@ public class AudioManager : Singleton<AudioManager>
 
             if (m_sfxPlayers[loopIndex].isPlaying)
                 continue;
-
-            int ranIndex = 0;
             /*
+            int ranIndex = 0;
+            
             if (sfx == Sfx.Hit || sfx == Sfx.Melee)
             {
                 ranIndex = Random.Range(0, 2);
