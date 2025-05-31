@@ -16,6 +16,16 @@ public class GameManager : Singleton<GameManager>
         base.SingletonInit();
     }
 
+    public void Start()
+    {
+        GameStart();
+    }
+
+    public void GameStart()
+    {
+        AudioManager.Instance.PlayBgm(true);
+    }
+
     public void ScorePlus(int score)
     {
         m_score += score;
@@ -45,11 +55,11 @@ public class GameManager : Singleton<GameManager>
         return m_playerSpellCoolTime;
     }
     #endregion
-       
 
     public void GameOver()
     {
         Debug.Log("Game Over");
+        AudioManager.Instance.PlayBgm(false);
         m_GameOver = true;
     }
 
