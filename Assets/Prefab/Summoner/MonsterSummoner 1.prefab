@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Data>k__BackingField: {fileID: 11400000, guid: e301bcfb84d016b438496151ea3b5d54, type: 2}
+  m_mob: {fileID: 6813070684462694251, guid: e6ca51168f530124c80b3aef754ae5a0, type: 3}

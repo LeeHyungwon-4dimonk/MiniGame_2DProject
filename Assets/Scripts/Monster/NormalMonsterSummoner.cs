@@ -1,19 +1,26 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using DesignPattern;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NormalMonsterSummoner : MonoBehaviour
 {
     [field: SerializeField] public MonsterData Data {  get; private set; }
-    private GameObject _childObject;
+    [SerializeField] NormalMonsterController m_mob;
+    
+    private ObjectPool m_monsterPool;
+    
+
+    private void Awake()
+    {
+        m_monsterPool = new ObjectPool(transform, m_mob, 1);
+    }
 
     private void OnEnable()
     {
-        _childObject = Instantiate(Data.Prefab, transform);
-    }
-    private void OnDisable()
-    {
-        Destroy(_childObject);
+        PooledObject monster = m_monsterPool.PopPool() as NormalMonsterController;
+        monster.transform.position = transform.position;
     }
 }

@@ -1,8 +1,9 @@
 using System.Collections;
+using DesignPattern;
 using UnityEngine;
 
 
-public class NormalMonsterController : MonoBehaviour,IDamageable
+public class NormalMonsterController : PooledObject, IDamageable
 {
     [SerializeField] public NormalMonsterData m_slimeData;
     [SerializeField] public LayerMask TargetLayer;
@@ -22,6 +23,8 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
     public bool IsMove;
     public Collider2D Player;
     public float AttackDelay;
+
+    private Coroutine m_coroutine;
 
     private float m_monsterHp;
 
@@ -74,13 +77,21 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
     public void TakeDamage(int damage)
     {
         SFXCtrl.PlaySFX("Damage");
-        m_monsterHp -= damage;       
+        m_monsterHp -= damage;
         if (m_monsterHp <= 0)
         {
+            StateMach.ChangeState(StateMach.StateDic[EState.Idle]);
             m_monsterHp = 0;
             GameManager.Instance.ScorePlus(100);
-            StartCoroutine(Die());
-            gameObject.SetActive(false);
+            if (m_coroutine != null)
+            {
+                StopCoroutine(m_coroutine);
+                m_coroutine = null;
+            }
+            if (m_coroutine == null)
+            {
+                m_coroutine = StartCoroutine(Die());
+            }
         }
     }
 
@@ -94,6 +105,7 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
     }
     IEnumerator Die()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.4f);
+        ReturnPool();
     }
 }

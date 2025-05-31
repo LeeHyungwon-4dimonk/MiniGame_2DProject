@@ -109,6 +109,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         Collider2D Monster;
         Monster = Physics2D.OverlapCircle(transform.position, 1.5f, m_layerMask);
+        
         if (Monster != null)
         {
             Monster.GetComponent<IDamageable>().TakeDamage(m_playerMeleeAttack);            

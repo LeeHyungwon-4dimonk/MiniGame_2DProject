@@ -23,7 +23,7 @@ public class Spell : PooledObject
         m_animator.SetTrigger("Burst");
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<IDamageable>().TakeDamage(3);
+            collision.gameObject.GetComponent<IDamageable>().TakeDamage(1);
         }
         if (m_coroutine != null)
         {
