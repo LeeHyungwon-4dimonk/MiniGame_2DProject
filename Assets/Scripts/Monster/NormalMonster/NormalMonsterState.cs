@@ -145,8 +145,15 @@ public class NormalMonsterState_Trace : NormalMonsterState
             m_slime.SpriteRenderer.flipX = true;
             targetPos = Vector2.left;
         }
-        if(m_slime.TargetTransform.position.x - m_slime.transform.position.x < 1)
+        if(m_slime.TargetTransform.position.x - m_slime.transform.position.x < 0.5)
         {
+            // 사운드 타이밍 안맞음 이슈로 사용 보류
+            /*
+            if (m_slime.SFXCtrl != null)
+            {
+                m_slime.SFXCtrl.LoopSFX("Attack");
+            }
+            */
             m_slime.StateMach.ChangeState(m_slime.StateMach.StateDic[EState.MeleeAttack]);
         }
     }
@@ -164,18 +171,22 @@ public class NormalMonsterState_MeleeAttack : NormalMonsterState
         HasPhysics = false;
     }
     public override void Enter()
-    {
+    {        
         m_slime.Anim.Play(m_slime.MELEEATTACK_HASH);
     }
 
     public override void Update()
     {
         base.Update();
+        
         m_slime.Rigid.velocity = Vector2.zero;
         m_slime.AttackDelay += Time.deltaTime;
         if (m_slime.AttackDelay > 1.5f)
         {
             m_slime.AttackDelay = 0;
+            /*
+            if(m_slime.SFXCtrl != null)
+            { m_slime.SFXCtrl.StopSFX(); }   */         
             m_slime.StateMach.ChangeState(m_slime.StateMach.StateDic[EState.Idle]);
         }
     }

@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 2874714406450026243}
   - component: {fileID: 6813070684462694251}
   - component: {fileID: 8875668700426957910}
+  - component: {fileID: 2110660312032285142}
+  - component: {fileID: 4207011286415033528}
   m_Layer: 9
   m_Name: Slime
   m_TagString: Enemy
@@ -158,6 +160,7 @@ MonoBehaviour:
   Rigid: {fileID: 0}
   SpriteRenderer: {fileID: 0}
   Anim: {fileID: 0}
+  SFXCtrl: {fileID: 0}
   TargetTransform: {fileID: 0}
   IsMove: 0
   Player: {fileID: 0}
@@ -198,3 +201,152 @@ CapsuleCollider2D:
   m_Offset: {x: 0.07827681, y: 0.8409173}
   m_Size: {x: 1.2643579, y: 1.7166241}
   m_Direction: 0
+--- !u!82 &2110660312032285142
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8817417464045084686}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 140
+  DopplerLevel: 1
+  MinDistance: 20
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.07360911
+      value: 0.9918823
+      inSlope: -24.660925
+      outSlope: -24.660925
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.08113239
+      value: 0.5
+      inSlope: -6.165231
+      outSlope: -6.165231
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.16226478
+      value: 0.25
+      inSlope: -1.5413078
+      outSlope: -1.5413078
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.32452956
+      value: 0.125
+      inSlope: -0.38532695
+      outSlope: -0.38532695
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6490591
+      value: 0.0625
+      inSlope: -0.09633174
+      outSlope: -0.09633174
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0.040566195
+      inSlope: -0.040582474
+      outSlope: -0.040582474
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &4207011286415033528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8817417464045084686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b318483368b1542a44e6b064e8497a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_sfx:
+  - Name: Attack
+    Clip: {fileID: 8300000, guid: 531eaa4708a964f48a9b94242a75d58b, type: 3}
+  - Name: Damage
+    Clip: {fileID: 8300000, guid: 4079b7ddcc9dc584fa2445b013c5e52c, type: 3}

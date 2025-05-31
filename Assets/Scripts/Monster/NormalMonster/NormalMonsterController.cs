@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 
@@ -11,6 +12,7 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
     public Rigidbody2D Rigid;
     public SpriteRenderer SpriteRenderer;
     public Animator Anim;
+    public SFXController SFXCtrl;
 
     public readonly int IDLE_HASH = Animator.StringToHash("Slime_Idle");
     public readonly int MELEEATTACK_HASH = Animator.StringToHash("Slime_Attack");
@@ -32,6 +34,7 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
         Rigid = GetComponent<Rigidbody2D>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
         Anim = GetComponent<Animator>();
+        TryGetComponent<SFXController>(out SFXCtrl);
         PatrolVec = Vector2.right;
         m_monsterHp = m_slimeData.MonsterHp;
         StateMachineInit();
@@ -70,11 +73,13 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
 
     public void TakeDamage(int damage)
     {
+        SFXCtrl.PlaySFX("Damage");
         m_monsterHp -= damage;       
         if (m_monsterHp <= 0)
         {
             m_monsterHp = 0;
             GameManager.Instance.ScorePlus(100);
+            StartCoroutine(Die());
             gameObject.SetActive(false);
         }
     }
@@ -86,5 +91,9 @@ public class NormalMonsterController : MonoBehaviour,IDamageable
         {
             Player.GetComponent<IDamageable>().TakeDamage(m_slimeData.MonsterAtk);
         }
+    }
+    IEnumerator Die()
+    {
+        yield return new WaitForSeconds(1);
     }
 }

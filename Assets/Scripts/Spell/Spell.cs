@@ -7,6 +7,8 @@ public class Spell : PooledObject
     private Animator m_animator;
     private Rigidbody2D m_rigid;
 
+    private Coroutine m_coroutine;
+
     [SerializeField] private float m_spellSpeed;
 
     private void Awake()
@@ -19,16 +21,24 @@ public class Spell : PooledObject
     {
         m_rigid.velocity = Vector2.zero;
         m_animator.SetTrigger("Burst");
-        if(collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<IDamageable>().TakeDamage(3);
         }
-        StartCoroutine(DestroyTerm());
+        if (m_coroutine != null)
+        {
+            StopCoroutine(m_coroutine);
+            m_coroutine = null;
+        }
+        if (m_coroutine == null)
+        {
+            m_coroutine = StartCoroutine(DestroyTerm());
+        }
     }
 
     IEnumerator DestroyTerm()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
         ReturnPool();
     }
 }
