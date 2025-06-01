@@ -36,9 +36,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     public float MeleeAttackDelay;
     public float RangeAttackDelay;
 
-    private int m_playerMaxHp;
-    private int m_playerHp;
-
     private void Awake() => Init();
     
     private void Init()
@@ -52,8 +49,6 @@ public class PlayerController : MonoBehaviour, IDamageable
         RangeAttackAction = GetComponent<PlayerInput>().actions["RangedAttack"];
         Muzzle = GetComponentInChildren<PlayerMuzzle>();
         SFXCtrl = GetComponent<SFXController>();
-        m_playerMaxHp = 10;
-        m_playerHp = m_playerMaxHp;
 
         StateMachineInit();
     }
@@ -96,11 +91,10 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
-        m_playerHp -= damage;
+        GameManager.Instance.SetCurHp(damage);
         Debug.Log("¾Æ¾ß");
-        if (m_playerHp <= 0)
+        if (GameManager.Instance.GetCurHP() == 0)
         { 
-            m_playerHp = 0;
             StateMach.ChangeState(StateMach.StateDic[EState.Die]);
         }
     }
@@ -121,15 +115,5 @@ public class PlayerController : MonoBehaviour, IDamageable
         IsJump = false;
         IsLand = true;
         Anim.SetBool("IsJump", IsJump);
-    }
-
-    public int GetMaxHP()
-    {
-        return m_playerMaxHp;
-    }
-
-    public int GetCurHP()
-    {
-        return m_playerHp;
     }
 }

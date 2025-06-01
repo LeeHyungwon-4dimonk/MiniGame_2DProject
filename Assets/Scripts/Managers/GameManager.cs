@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using DesignPattern;
 using UnityEngine;
 
@@ -7,6 +8,9 @@ public class GameManager : Singleton<GameManager>
 {
     private static float m_playerSpellCoolTime = 0;
     private static int m_score;
+    private static int m_playerMaxHp;
+    private static int m_playerCurHp;
+
     private static bool m_GameOver = false;
 
     private void Awake() => Init();
@@ -14,6 +18,9 @@ public class GameManager : Singleton<GameManager>
     private void Init()
     {
         base.SingletonInit();
+        m_playerMaxHp = 10;
+        m_playerCurHp = m_playerMaxHp;
+        m_score = 0;
     }
 
     public void Start()
@@ -26,6 +33,8 @@ public class GameManager : Singleton<GameManager>
         AudioManager.Instance.PlayBgm(true);
     }
 
+    #region Score
+
     public void ScorePlus(int score)
     {
         m_score += score;
@@ -36,6 +45,7 @@ public class GameManager : Singleton<GameManager>
     {
         return m_score;
     }
+    #endregion
 
     #region PlayerCoolTime
 
@@ -56,6 +66,27 @@ public class GameManager : Singleton<GameManager>
     }
     #endregion
 
+    #region PlayerHp
+
+    public int GetMaxHP()
+    {
+        return m_playerMaxHp;
+    }
+
+    public int GetCurHP()
+    {
+        if(m_playerCurHp < 0)
+            return 0;
+        return m_playerCurHp;
+    }
+
+    public void SetCurHp(int damage)
+    {
+        m_playerCurHp -= damage;
+    }
+
+    #endregion
+
     public void GameOver()
     {
         Debug.Log("Game Over");
@@ -67,4 +98,6 @@ public class GameManager : Singleton<GameManager>
     {
         return m_GameOver;
     }
+
+
 }
