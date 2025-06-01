@@ -1,6 +1,7 @@
 using System.Collections;
 using DesignPattern;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 
 
 public class NormalMonsterController : PooledObject, IDamageable
@@ -8,6 +9,7 @@ public class NormalMonsterController : PooledObject, IDamageable
     [SerializeField] public NormalMonsterData m_slimeData;
     [SerializeField] public LayerMask TargetLayer;
     [SerializeField] public LayerMask GroundLayer;
+    [SerializeField] private GameObject m_potion;
 
     public StateMachine StateMach;
     public Rigidbody2D Rigid;
@@ -68,6 +70,7 @@ public class NormalMonsterController : PooledObject, IDamageable
         {
             StateMach.ChangeState(StateMach.StateDic[EState.Idle]);
         }
+        
     }
 
     private void FixedUpdate()
@@ -76,6 +79,11 @@ public class NormalMonsterController : PooledObject, IDamageable
         {
             StateMach.FixedUpdate();
         }
+    }
+
+    private void OnDisable()
+    {
+        DropPotion();
     }
 
     public void TakeDamage(int damage)
@@ -98,6 +106,18 @@ public class NormalMonsterController : PooledObject, IDamageable
         if (Player != null)
         {
             Player.GetComponent<IDamageable>().TakeDamage(m_slimeData.MonsterAtk);
+        }
+    }
+
+    private void DropPotion()
+    {
+        if(IsDead)
+        {
+            int rand = Random.Range(0, 10);
+            if(rand == 7)
+            {
+                Instantiate(m_potion, transform.position, Quaternion.identity);
+            }
         }
     }
 

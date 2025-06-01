@@ -157,14 +157,19 @@ MonoBehaviour:
   GroundLayer:
     serializedVersion: 2
     m_Bits: 256
+  m_potion: {fileID: 8208140684372255417, guid: 0d454c2b7cbfb504e9f62ce7b81b1b27, type: 3}
   Rigid: {fileID: 0}
   SpriteRenderer: {fileID: 0}
   Anim: {fileID: 0}
   SFXCtrl: {fileID: 0}
   TargetTransform: {fileID: 0}
   IsMove: 0
+  IsStun: 0
+  IsDead: 0
   Player: {fileID: 0}
   AttackDelay: 0
+  StunDelay: 0
+  DieDelay: 0
   PatrolVec: {x: 0, y: 0}
 --- !u!70 &8875668700426957910
 CapsuleCollider2D:

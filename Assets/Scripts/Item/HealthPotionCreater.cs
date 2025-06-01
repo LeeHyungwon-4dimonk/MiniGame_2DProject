@@ -13,10 +13,11 @@ public class HealthPotionCreater : PotionCreater
         m_status = Random.Range(1, 4);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
+            if (GameManager.Instance.GetCurHP() == GameManager.Instance.GetMaxHP()) return;
             Recover();
             gameObject.SetActive(false);
         }
