@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public bool IsMove;
     public bool IsJump;
     public bool IsLand;
+    public bool IsCharging;
 
     public float MeleeAttackDelay;
     public float RangeAttackDelay;

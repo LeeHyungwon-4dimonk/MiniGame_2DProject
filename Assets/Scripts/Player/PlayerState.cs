@@ -207,6 +207,7 @@ public class Player_Charge : PlayerState
         m_player.Anim.Play(m_player.CHARGE_HASH);
         m_player.SFXCtrl.LoopSFX("Charge");
         m_player.ChargeTime = 0;
+        m_player.IsCharging = true;
     }
 
     public override void Update()
@@ -216,6 +217,7 @@ public class Player_Charge : PlayerState
         if (m_player.RangeAttackAction.WasReleasedThisFrame())
         {
             m_player.SFXCtrl.StopSFX();
+            m_player.IsCharging = false;
             m_player.StateMach.ChangeState(m_player.StateMach.StateDic[EState.RangedAttack]);
         }
     }
