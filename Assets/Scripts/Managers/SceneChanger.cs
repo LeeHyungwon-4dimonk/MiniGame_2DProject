@@ -13,6 +13,7 @@ public enum SceneName
     Stage2Scene,
     Stage3_1Scene,
     Stage3_2Scene,
+    Stage4Scene,
 }
 
 public class SceneChanger : Singleton<SceneChanger>
