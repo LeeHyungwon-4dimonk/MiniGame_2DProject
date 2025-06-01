@@ -80,9 +80,16 @@ public class GameManager : Singleton<GameManager>
         return m_playerCurHp;
     }
 
-    public void SetCurHp(int damage)
+    public void DamageHp(int value)
     {
-        m_playerCurHp -= damage;
+        m_playerCurHp -= value;
+        if (m_playerCurHp < 0) m_playerCurHp = 0;
+    }
+
+    public void RecoverHp(int value)
+    {
+        m_playerCurHp += value;
+        if(m_playerCurHp > m_playerMaxHp) m_playerCurHp = m_playerMaxHp;
     }
 
     #endregion

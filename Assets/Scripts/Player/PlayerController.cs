@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
-        GameManager.Instance.SetCurHp(damage);
+        GameManager.Instance.DamageHp(damage);
         Debug.Log("¾Æ¾ß");
         if (GameManager.Instance.GetCurHP() == 0)
         { 
