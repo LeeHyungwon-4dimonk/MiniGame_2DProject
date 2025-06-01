@@ -141,7 +141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9ec327caa7e8a0941b1581923d05a80a, type: 3}
+  m_Sprite: {fileID: 21300108, guid: de9a21ea593fe7f4294f7ff53e30b5ba, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -328,7 +328,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3117720097857935535}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.8573, y: 1.8573, z: 1.8573}
   m_ConstrainProportionsScale: 0
@@ -719,8 +719,9 @@ GameObject:
   m_Component:
   - component: {fileID: 384735350822046438}
   - component: {fileID: 2298483875545647522}
+  - component: {fileID: 148362487667831946}
   m_Layer: 5
-  m_Name: Armor
+  m_Name: Mana
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -755,6 +756,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6688892115212440955}
   m_CullTransparentMesh: 1
+--- !u!114 &148362487667831946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6688892115212440955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b27a76f996a88b843b7e44024ae551bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7951181629076771525
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,7 +856,7 @@ GameObject:
   - component: {fileID: 9121125056656864675}
   - component: {fileID: 5937495802431661383}
   m_Layer: 5
-  m_Name: Armor Icon
+  m_Name: Mana Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

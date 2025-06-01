@@ -17,7 +17,7 @@ public class ManaPotionCreater : PotionCreater
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (GameManager.Instance.GetCurHP() == GameManager.Instance.GetMaxHP()) return;
+            if (GameManager.Instance.GetCurMP() == GameManager.Instance.GetMaxMP()) return;
             Recover();
             gameObject.SetActive(false);
         }
@@ -25,6 +25,6 @@ public class ManaPotionCreater : PotionCreater
 
     public override void Recover()
     {
-        GameManager.Instance.RecoverHp(m_status);
+        GameManager.Instance.RecoverMp(m_status);
     }
 }

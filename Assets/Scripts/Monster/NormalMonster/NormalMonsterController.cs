@@ -9,7 +9,7 @@ public class NormalMonsterController : PooledObject, IDamageable
     [SerializeField] public NormalMonsterData m_slimeData;
     [SerializeField] public LayerMask TargetLayer;
     [SerializeField] public LayerMask GroundLayer;
-    [SerializeField] private GameObject m_potion;
+    [SerializeField] private GameObject[] m_potions;
 
     public StateMachine StateMach;
     public Rigidbody2D Rigid;
@@ -116,7 +116,11 @@ public class NormalMonsterController : PooledObject, IDamageable
             int rand = Random.Range(0, 10);
             if(rand == 7)
             {
-                Instantiate(m_potion, transform.position, Quaternion.identity);
+                Instantiate(m_potions[0], transform.position, Quaternion.identity);
+            }
+            if(rand == 8)
+            {
+                Instantiate(m_potions[1], transform.position, Quaternion.identity);
             }
         }
     }

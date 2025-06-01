@@ -157,7 +157,9 @@ MonoBehaviour:
   GroundLayer:
     serializedVersion: 2
     m_Bits: 256
-  m_potion: {fileID: 8208140684372255417, guid: 0d454c2b7cbfb504e9f62ce7b81b1b27, type: 3}
+  m_potions:
+  - {fileID: 8208140684372255417, guid: 0d454c2b7cbfb504e9f62ce7b81b1b27, type: 3}
+  - {fileID: 8208140684372255417, guid: 45f3f82cb28953643a95cea198931e9b, type: 3}
   Rigid: {fileID: 0}
   SpriteRenderer: {fileID: 0}
   Anim: {fileID: 0}

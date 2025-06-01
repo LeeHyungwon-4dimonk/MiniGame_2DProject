@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1092901842805759311}
   - component: {fileID: 4214414860112528224}
-  - component: {fileID: 6373198853446892595}
   - component: {fileID: 8096664405140411784}
   - component: {fileID: 3242118115019350519}
+  - component: {fileID: 2300200023356440331}
   m_Layer: 10
   m_Name: ManaPotion
   m_TagString: Untagged
@@ -87,18 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6373198853446892595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8208140684372255417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ab21607bc4c7fe44b542459770c3d7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &8096664405140411784
 Rigidbody2D:
   serializedVersion: 4
@@ -171,3 +159,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1875, y: 1.0625}
   m_EdgeRadius: 0
+--- !u!114 &2300200023356440331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8208140684372255417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb86ad1ae0cc6f24494d831a7a40d2b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
