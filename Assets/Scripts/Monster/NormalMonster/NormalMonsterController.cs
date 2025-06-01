@@ -94,7 +94,7 @@ public class NormalMonsterController : PooledObject, IDamageable
 
     public void Attack()
     {
-        Player = Physics2D.OverlapCircle(transform.position, 1f, TargetLayer);
+        Player = Physics2D.OverlapCircle(transform.position + Vector3.up, 2f, TargetLayer);
         if (Player != null)
         {
             Player.GetComponent<IDamageable>().TakeDamage(m_slimeData.MonsterAtk);
@@ -104,5 +104,6 @@ public class NormalMonsterController : PooledObject, IDamageable
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, m_slimeData.MonsterSight);
+        Gizmos.DrawWireSphere(transform.position+Vector3.up, 1.5f);
     }
 }
