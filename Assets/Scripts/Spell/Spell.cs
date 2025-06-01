@@ -28,7 +28,9 @@ public class Spell : PooledObject
         m_animator.SetTrigger("Burst");
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<IDamageable>().TakeDamage(1);
+            int damage = 1 + (int)(GameObject.FindWithTag("Player").GetComponent<PlayerController>().ChargeTime / 1.5f);
+            if (damage > 5) { damage = 5; }
+            collision.gameObject.GetComponent<IDamageable>().TakeDamage(damage);
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
         if (m_coroutine != null)

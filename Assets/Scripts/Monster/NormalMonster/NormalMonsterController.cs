@@ -88,7 +88,7 @@ public class NormalMonsterController : PooledObject, IDamageable
 
     public void TakeDamage(int damage)
     {
-        Debug.Log("¾ÆÆÄ");
+        Debug.Log($"{damage}");
         m_monsterHp -= damage;
         SFXCtrl.PlaySFX("Damage");
         StateMach.ChangeState(StateMach.StateDic[EState.Stun]);

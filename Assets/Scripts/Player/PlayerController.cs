@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     public PlayerMuzzle Muzzle;
     public SFXController SFXCtrl;
 
-
     public Vector2 InputX;
     public InputAction JumpAction;
     public InputAction MeleeAttackAction;
@@ -35,6 +34,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public float MeleeAttackDelay;
     public float RangeAttackDelay;
+    public float ChargeTime;
 
     private void Awake() => Init();
     

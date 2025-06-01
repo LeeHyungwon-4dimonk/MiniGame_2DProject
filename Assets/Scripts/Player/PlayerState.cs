@@ -206,11 +206,13 @@ public class Player_Charge : PlayerState
     {
         m_player.Anim.Play(m_player.CHARGE_HASH);
         m_player.SFXCtrl.LoopSFX("Charge");
+        m_player.ChargeTime = 0;
     }
 
     public override void Update()
     {
         base.Update();
+        m_player.ChargeTime += Time.deltaTime;
         if (m_player.RangeAttackAction.WasReleasedThisFrame())
         {
             m_player.SFXCtrl.StopSFX();
