@@ -23,13 +23,18 @@ public class NormalMonsterState : BaseState
     private void DetectPlayer()
     {
         m_slime.Player = Physics2D.OverlapCircle(m_slime.transform.position, m_slime.m_slimeData.MonsterSight, m_slime.TargetLayer);
-        if (m_slime.Player != null)
+        
+        if (m_slime.Player != null
+            && Mathf.Abs(m_slime.Player.transform.position.y -
+            m_slime.transform.position.y) < 1f)
         {
             m_slime.TargetTransform = m_slime.Player.transform;
             m_slime.StateMach.ChangeState(m_slime.StateMach.StateDic[EState.Trace]);
         }
     }
+    
 }
+
 
 public class NormalMonsterState_Idle : NormalMonsterState
 {
@@ -62,7 +67,9 @@ public class NormalMonsterState_Idle : NormalMonsterState
     {
         waitedTime += Time.deltaTime;
         m_slime.Player = Physics2D.OverlapCircle(m_slime.transform.position, m_slime.m_slimeData.MonsterSight, m_slime.TargetLayer);
-        if (m_slime.Player != null)
+        if (m_slime.Player != null
+            && Mathf.Abs(m_slime.Player.transform.position.y -
+            m_slime.transform.position.y) < 1f)
         {
             m_slime.TargetTransform = m_slime.Player.transform;
             m_slime.StateMach.ChangeState(m_slime.StateMach.StateDic[EState.Trace]);
@@ -105,7 +112,6 @@ public class NormalMonsterState_Walk : NormalMonsterState
             m_slime.SpriteRenderer.flipX = !m_slime.SpriteRenderer.flipX;
             m_slime.StateMach.ChangeState(m_slime.StateMach.StateDic[EState.Idle]);
         }
-
     }
 
     public override void FixedUpdate()
@@ -146,8 +152,10 @@ public class NormalMonsterState_Trace : NormalMonsterState
             m_slime.SpriteRenderer.flipX = true;
             targetPos = Vector2.left;
         }
-        if(m_slime.TargetTransform.position.x - m_slime.transform.position.x < 0.5)
-        {            
+
+        if (Mathf.Abs(m_slime.TargetTransform.position.x - m_slime.transform.position.x) < 2f
+            && Mathf.Abs(m_slime.TargetTransform.position.y - m_slime.transform.position.y) < 1.5f)
+        {   
             m_slime.StateMach.ChangeState(m_slime.StateMach.StateDic[EState.MeleeAttack]);
         }
     }

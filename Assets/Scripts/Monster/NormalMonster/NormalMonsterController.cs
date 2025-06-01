@@ -100,4 +100,9 @@ public class NormalMonsterController : PooledObject, IDamageable
             Player.GetComponent<IDamageable>().TakeDamage(m_slimeData.MonsterAtk);
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, m_slimeData.MonsterSight);
+    }
 }

@@ -17,6 +17,11 @@ public class Spell : PooledObject
         m_rigid = GetComponent<Rigidbody2D>();
     }
 
+    private void OnEnable()
+    {
+        gameObject.GetComponent<BoxCollider2D>().enabled = true;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         m_rigid.velocity = Vector2.zero;
@@ -24,6 +29,7 @@ public class Spell : PooledObject
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<IDamageable>().TakeDamage(1);
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
         if (m_coroutine != null)
         {
