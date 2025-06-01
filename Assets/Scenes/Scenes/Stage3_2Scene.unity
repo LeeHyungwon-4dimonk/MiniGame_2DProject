@@ -1289,6 +1289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d83312f27b192c42a8e0df7c9024c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_sceneName: 0
 --- !u!61 &878684977
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8261,9 +8262,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD29C\uD1A0\uB9AC\uC5BC \uB9F5\uC5D0 \uC624\uC2E0 \uAC83\uC744 \uD658\uC601\uD569\uB2C8\uB2E4!\n\uC870\uC791\uD0A4\uB97C
-    \uC54C\uC544\uBCF4\uB3C4\uB85D \uD569\uC2DC\uB2E4\n\n\uC67C\uCABD \uC774\uB3D9
-    - A  /  \uC624\uB978\uCABD \uC774\uB3D9 - D"
+  m_text: "3.2 \uB9F5"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: da7168b661dda9c419c2b3387b9b6fe0, type: 2}
   m_sharedMaterial: {fileID: 1242314130863942800, guid: da7168b661dda9c419c2b3387b9b6fe0, type: 2}
