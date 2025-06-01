@@ -10,6 +10,9 @@ public class GameManager : Singleton<GameManager>
     private static int m_score;
     private static int m_playerMaxHp;
     private static int m_playerCurHp;
+    private static int m_playerMaxMp;
+    private static int m_playerCurMp;
+
 
     private static bool m_GameOver = false;
 
@@ -20,6 +23,8 @@ public class GameManager : Singleton<GameManager>
         base.SingletonInit();
         m_playerMaxHp = 10;
         m_playerCurHp = m_playerMaxHp;
+        m_playerMaxMp = 5;
+        m_playerCurMp = m_playerMaxMp;
         m_score = 0;
     }
 
@@ -83,16 +88,40 @@ public class GameManager : Singleton<GameManager>
     public void DamageHp(int value)
     {
         m_playerCurHp -= value;
-        if (m_playerCurHp < 0) m_playerCurHp = 0;
+        if (m_playerCurHp <= 0) m_playerCurHp = 0;
     }
 
     public void RecoverHp(int value)
     {
         m_playerCurHp += value;
-        if(m_playerCurHp > m_playerMaxHp) m_playerCurHp = m_playerMaxHp;
+        if(m_playerCurHp >= m_playerMaxHp) m_playerCurHp = m_playerMaxHp;
     }
 
     #endregion
+
+    public int GetMaxMP()
+    {
+        return m_playerMaxMp;
+    }
+
+    public int GetCurMP()
+    {
+        if (m_playerCurMp < 0)
+            return 0;
+        return m_playerCurMp;
+    }
+
+    public void UseMp(int value)
+    {
+        m_playerCurMp -= value;
+        if (m_playerCurMp <= 0) m_playerCurMp = 0;
+    }
+
+    public void RecoverMp(int value)
+    {
+        m_playerCurMp += value;
+        if (m_playerCurMp >= m_playerMaxMp) m_playerCurMp = m_playerMaxMp;
+    }
 
     public void GameOver()
     {

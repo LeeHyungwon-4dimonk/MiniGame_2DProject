@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHPUI : MonoBehaviour
+public class PlayerMPUI : MonoBehaviour
 {
     private Image m_image;
     private Text text;

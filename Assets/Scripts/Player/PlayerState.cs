@@ -32,7 +32,8 @@ public class PlayerState : BaseState
         }
 
         if(!m_player.Anim.GetCurrentAnimatorStateInfo(0).IsName("Player_MeleeAttack")
-            && m_player.RangeAttackAction.IsPressed() && GameManager.Instance.GetCoolTime() < 0)
+            && m_player.RangeAttackAction.IsPressed() && GameManager.Instance.GetCoolTime() < 0
+            && GameManager.Instance.GetCurMP() > 0)
         {
             GameManager.Instance.SetCoolTime(3);
             m_player.StateMach.ChangeState(m_player.StateMach.StateDic[EState.Charge]);
@@ -239,6 +240,7 @@ public class Player_RangeAttack : PlayerState
         if (m_player.RangeAttackDelay > 0.4f)
         {            
             m_player.RangeAttackDelay = 0;
+            GameManager.Instance.UseMp(1);
             m_player.StateMach.ChangeState(m_player.StateMach.StateDic[EState.Idle]);
         }
     }
