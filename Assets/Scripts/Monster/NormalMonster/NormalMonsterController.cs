@@ -31,9 +31,9 @@ public class NormalMonsterController : PooledObject, IDamageable
     public SFXController SFXCtrl;
 
     // 몬스터 애니메이션
-    public readonly int IDLE_HASH = Animator.StringToHash("Slime_Idle");
-    public readonly int MELEEATTACK_HASH = Animator.StringToHash("Slime_Attack");
-    public readonly int DIE_HASH = Animator.StringToHash("Slime_Die");
+    public readonly int IDLE_HASH = Animator.StringToHash("NormalMonster_Idle");
+    public readonly int MELEEATTACK_HASH = Animator.StringToHash("NormalMonster_Attack");
+    public readonly int DIE_HASH = Animator.StringToHash("NormalMonster_Die");
 
     // 몬스터 상태 변수
     public bool IsMove;
