@@ -1,10 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using DesignPattern;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// 씬이 추가되면 여기에 새로운 씬 이름을 등록해주세요
+/// </summary>
 [Serializable]
 public enum SceneName 
 { 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +12,7 @@ public class TitleSceneUI : MonoBehaviour
         m_endButton.onClick.AddListener(GameEnd);
     }
 
+    // 게임 시작
     private void GameStart()
     {
         SceneChanger.Instance.SceneChange(SceneName.Stage1Scene);
@@ -21,8 +20,15 @@ public class TitleSceneUI : MonoBehaviour
         AudioManager.Instance.PlayBgm(true);
     }
 
+    // 게임 종료
     private void GameEnd()
     {
         Application.Quit();
+    }
+
+    private void OnDisable()
+    {
+        m_startButton?.onClick.RemoveListener(GameStart);
+        m_endButton?.onClick.RemoveListener(GameEnd);
     }
 }

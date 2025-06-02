@@ -1,21 +1,24 @@
-using System.Collections;
 using DesignPattern;
 using UnityEngine;
 
 public class PlayerMuzzle : MonoBehaviour
 {
-    // 플레이어
+    // 스펠 프리팹
+    [SerializeField] Spell m_spellPrefab;
+
+    // 스펠 발사 속도(밸런싱)
+    [SerializeField] float m_spellSpeed;
+    
+    // 플레이어 컴포넌트
     private PlayerController m_playerController;
     private SpriteRenderer m_playerSpriteRenderer;
 
-    // 프리팹
+    // 스펠 프리팹 컴포넌트
     private Rigidbody2D m_spellRigid;
     private SpriteRenderer m_spellSpriteRenderer;
 
+    // 스펠 풀 생성
     private ObjectPool m_spellPool;
-
-    [SerializeField] Spell m_spellPrefab;
-    [SerializeField] float m_spellSpeed;
 
     private void Awake()
     {
@@ -26,11 +29,15 @@ public class PlayerMuzzle : MonoBehaviour
 
     public void Fire()
     {
+        // 플레이어가 차징 상태이면
         if (m_playerController.StateMach.CurState == m_playerController.StateMach.StateDic[EState.RangedAttack])
         {
             PooledObject spell = m_spellPool.PopPool() as Spell;
             m_spellRigid = spell.GetComponent<Rigidbody2D>();
             m_spellSpriteRenderer = spell.GetComponent<SpriteRenderer>();
+
+            // 플레이어가 보는 방향 판정
+            // 보는 방향에 따라 Muzzle의 위치를 이동시키고 발사 방향 결정 및 스펠 애니메이션 출력 방향 결정
             if (m_playerSpriteRenderer.flipX == false)
             {
                 gameObject.transform.localPosition = new Vector3(0.8f, 0.7f, 0);

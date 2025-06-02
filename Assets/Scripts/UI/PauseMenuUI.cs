@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,14 +10,16 @@ public class PauseMenuUI : MonoBehaviour
     [SerializeField] private Button m_resumebutton;
     [SerializeField] private Button[] m_titleButton;
 
-    // GameOverUI
+    // GameEndUI
     [SerializeField] private GameObject m_gameOverPanel;
     [SerializeField] private TMP_Text m_gameOverText;
     [SerializeField] private TMP_Text m_gameClearText;
     [SerializeField] private TMP_Text m_scoreText;
     [SerializeField] private Button m_restartButton;
 
-    private Coroutine m_coroutine;
+    // 게임 종료 UI를 출력을 띄엄띄엄하게하는 효과용
+    // 현재 오류가 있어 추후 반영 예정
+    // private Coroutine m_coroutine;
 
     private void Awake() => Init();
 
@@ -69,6 +69,8 @@ public class PauseMenuUI : MonoBehaviour
 
     #endregion
 
+    #region GameEndMenu
+
     private void ReturnTitle()
     {
         m_gameOverPanel.SetActive(false);
@@ -92,7 +94,12 @@ public class PauseMenuUI : MonoBehaviour
         SceneChanger.Instance.SceneChange(SceneName.Stage1Scene);
     }
 
-    
+    #endregion
+
+    // 게임 종료 시 UI를
+    // 게임 오버/게임 승리 -> 스코어 -> 버튼 순으로 순차적으로 띄우는 기능
+    // 오류가 있어 반영하지 못하고 수정중
+    /*
     IEnumerator GameEnd()
     {
         WaitForSeconds delay = new WaitForSeconds(1);
@@ -120,4 +127,5 @@ public class PauseMenuUI : MonoBehaviour
         m_restartButton.enabled = true;
         m_titleButton[1].enabled = true;
     }
+    */
 }

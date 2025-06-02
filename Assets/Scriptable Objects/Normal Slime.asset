@@ -18,3 +18,4 @@ MonoBehaviour:
   MonsterAtk: 2
   MonsterMoveSpeed: 3
   MonsterSight: 3
+  Score: 100

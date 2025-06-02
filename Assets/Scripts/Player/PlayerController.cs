@@ -1,15 +1,29 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// 플레이어에 직접 붙이는 컨트롤러 컴포넌트
+/// </summary>
 public class PlayerController : MonoBehaviour, IDamageable
 {
-    [SerializeField] public float MoveSpeed;
-    [SerializeField] public float JumpPow;
+    // 밸런스용 변수들
 
+    // 플레이어 이동 속도(밸런싱)
+    [SerializeField] public float MoveSpeed;
+    // 플레이어 점프력(밸런싱)
+    [SerializeField] public float JumpPow;
+    // 플레이어 공격력(밸런싱)
     [SerializeField] private int m_playerMeleeAttack;
+    // 플레이어 근접공격 범위(밸런싱)
+    [SerializeField] private float m_playerAttackRange;
+
+    // 플레이어 타겟
     [SerializeField] private LayerMask m_layerMask;
 
+    // 플레이어 상태머신
     public StateMachine StateMach;
+
+    // 컴포넌트 참조
     public Animator Anim;
     public Rigidbody2D Rigid;
     public SpriteRenderer SpriteRenderer;
@@ -17,28 +31,35 @@ public class PlayerController : MonoBehaviour, IDamageable
     public PlayerMuzzle Muzzle;
     public SFXController SFXCtrl;
 
+    // 플레이어 컨트롤 변수
     public Vector2 InputX;
     public InputAction JumpAction;
     public InputAction MeleeAttackAction;
     public InputAction RangeAttackAction;
 
+    // 플레이어 애니메이션
     public readonly int IDLE_HASH = Animator.StringToHash("Player_Idle");
     public readonly int MELEEATTACK_HASH = Animator.StringToHash("Player_MeleeAttack");
     public readonly int CHARGE_HASH = Animator.StringToHash("Player_ChargeSpell");
     public readonly int SPELLATTACK_HASH = Animator.StringToHash("Player_SpellAttack");
     public readonly int DIE_HASH = Animator.StringToHash("Player_Die");
 
+    // 플레이어 상태 변수(bool)
     public bool IsMove;
     public bool IsJump;
     public bool IsLand;
     public bool IsCharging;
 
+    // 플레이어 시간 변수
     public float MeleeAttackDelay;
     public float RangeAttackDelay;
     public float ChargeTime;
 
+    // 플레이어 몬스터 거리 판정용
+    private Collider2D m_monster;
+
     private void Awake() => Init();
-    
+
     private void Init()
     {
         Anim = GetComponent<Animator>();
@@ -54,6 +75,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         StateMachineInit();
     }
 
+    // 상태머신 상태 등록
     private void StateMachineInit()
     {
         StateMach = new StateMachine();
@@ -70,10 +92,13 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Update()
     {
+        // 게임이 끝난 상태가 아니면
         if (!GameManager.Instance.IsGameOver() && !GameManager.Instance.IsGameClear())
         {
             StateMach.Update();
         }
+
+        // 게임 종료 후에도 반복 재생되는 효과음 재생 방지
         else
         {
             SFXCtrl.StopSFX();
@@ -82,39 +107,50 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void FixedUpdate()
     {
+        // 게임이 끝난 상태가 아니면
         if (!GameManager.Instance.IsGameOver() && !GameManager.Instance.IsGameClear())
         {
             StateMach.FixedUpdate();
         }
     }
 
+    // InputSystem 입력
     public void OnMove(InputValue value)
     {
         InputX = value.Get<Vector2>();
         InputX.Normalize();
     }
 
+    /// <summary>
+    /// 플레이어 데미지 (damamge 수치만큼)
+    /// </summary>
+    /// <param name="damage"></param>
     public void TakeDamage(int damage)
     {
         GameManager.Instance.DamageHp(damage);
-        Debug.Log("아야");
+        //Debug.Log("아야");
         if (GameManager.Instance.GetCurHP() == 0)
-        { 
+        {
             StateMach.ChangeState(StateMach.StateDic[EState.Die]);
         }
     }
 
+    /// <summary>
+    /// 플레이어의 공격 반영
+    /// Animation Event 함수로 사용함
+    /// 플레이어의 근접 공격 범위 판정 밸런싱이 필요할 시 여기에서 수정
+    /// </summary>
     public void Attack()
     {
-        Collider2D Monster;
-        Monster = Physics2D.OverlapCircle(transform.position, 1.5f, m_layerMask);
-        
-        if (Monster != null)
+        m_monster = Physics2D.OverlapCircle(transform.position, m_playerAttackRange, m_layerMask);
+
+        if (m_monster != null)
         {
-            Monster.GetComponent<IDamageable>().TakeDamage(m_playerMeleeAttack);            
+            m_monster.GetComponent<IDamageable>().TakeDamage(m_playerMeleeAttack);
         }
     }
 
+    // 플레이어 바닥 접촉 시 점프 가능
     public void OnCollisionEnter2D(Collision2D collision)
     {
         IsJump = false;

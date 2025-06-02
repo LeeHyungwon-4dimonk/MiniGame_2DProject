@@ -190,6 +190,7 @@ MonoBehaviour:
   MoveSpeed: 5
   JumpPow: 20
   m_playerMeleeAttack: 3
+  m_playerAttackRange: 1.2
   m_layerMask:
     serializedVersion: 2
     m_Bits: 512
@@ -230,8 +231,10 @@ MonoBehaviour:
   IsMove: 0
   IsJump: 0
   IsLand: 0
+  IsCharging: 0
   MeleeAttackDelay: 0
   RangeAttackDelay: 0
+  ChargeTime: 0
 --- !u!114 &7211167691410437169
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,13 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 인게임 플레이어 마나 바
+/// </summary>
 public class PlayerHPUI : MonoBehaviour
 {
+    // 컴포넌트 참조
     private Image m_image;
     private Text text;
+
+    // 변수 저장
     private int m_maxMp;
     private int m_curMp;
 
