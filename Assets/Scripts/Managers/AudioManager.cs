@@ -49,7 +49,6 @@ public class AudioManager : Singleton<AudioManager>
         else m_bgmPlayer.Stop();
     }
 
-
     public void PlaySfx(Sfx sfx)
     {
         for (int index = 0; index < m_sfxPlayers.Length; index++)

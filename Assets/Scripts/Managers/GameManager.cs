@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using DesignPattern;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -13,8 +14,8 @@ public class GameManager : Singleton<GameManager>
     private static int m_playerMaxMp;
     private static int m_playerCurMp;
 
-
     private static bool m_GameOver = false;
+    private static bool m_GamePaused = false;
 
     private void Awake() => Init();
 
@@ -28,14 +29,43 @@ public class GameManager : Singleton<GameManager>
         m_score = 0;
     }
 
-    public void Start()
+    public void Update()
     {
-        GameStart();
+
     }
 
     public void GameStart()
     {
+        m_playerMaxHp = 10;
+        m_playerCurHp = m_playerMaxHp;
+        m_playerMaxMp = 5;
+        m_playerCurMp = m_playerMaxMp;
+        m_score = 0;
         AudioManager.Instance.PlayBgm(true);
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("Game Over");
+        AudioManager.Instance.PlayBgm(false);
+        m_GameOver = true;
+    }
+
+    public bool IsGameOver()
+    {
+        return m_GameOver;
+    }
+
+    public void Pause(bool isPause)
+    {
+        m_GamePaused = isPause;
+        if (m_GamePaused) Time.timeScale = 0;
+        else Time.timeScale = 1;
+    }
+
+    public bool IsPause()
+    {
+       return m_GamePaused;
     }
 
     #region Score
@@ -50,6 +80,7 @@ public class GameManager : Singleton<GameManager>
     {
         return m_score;
     }
+
     #endregion
 
     #region PlayerCoolTime
@@ -99,6 +130,8 @@ public class GameManager : Singleton<GameManager>
 
     #endregion
 
+    #region PlayerMp
+
     public int GetMaxMP()
     {
         return m_playerMaxMp;
@@ -123,17 +156,5 @@ public class GameManager : Singleton<GameManager>
         if (m_playerCurMp >= m_playerMaxMp) m_playerCurMp = m_playerMaxMp;
     }
 
-    public void GameOver()
-    {
-        Debug.Log("Game Over");
-        AudioManager.Instance.PlayBgm(false);
-        m_GameOver = true;
-    }
-
-    public bool IsGameOver()
-    {
-        return m_GameOver;
-    }
-
-
+    #endregion
 }
