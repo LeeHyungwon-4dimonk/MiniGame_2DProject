@@ -193,7 +193,7 @@ MonoBehaviour:
   m_playerAttackRange: 1.2
   m_layerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 2560
   Anim: {fileID: 0}
   Rigid: {fileID: 0}
   SpriteRenderer: {fileID: 0}
@@ -284,6 +284,10 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 8570f0a1ab3750f4f95e8ca5d29ab32e, type: 3}
   - Name: Sword
     Clip: {fileID: 8300000, guid: 1b8614796c9bb3d4da203243cfcdd999, type: 3}
+  - Name: Jump
+    Clip: {fileID: 8300000, guid: 531eaa4708a964f48a9b94242a75d58b, type: 3}
+  - Name: Charge
+    Clip: {fileID: 8300000, guid: 29e14d79745dc4f43869c423e2ada906, type: 3}
 --- !u!82 &217536549871417658
 AudioSource:
   m_ObjectHideFlags: 0

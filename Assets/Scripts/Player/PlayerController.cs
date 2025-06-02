@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public float ChargeTime;
 
     // 플레이어 몬스터 거리 판정용
-    private Collider2D m_monster;
+    private Collider2D m_attackable;
 
     private void Awake() => Init();
 
@@ -142,11 +142,11 @@ public class PlayerController : MonoBehaviour, IDamageable
     /// </summary>
     public void Attack()
     {
-        m_monster = Physics2D.OverlapCircle(transform.position, m_playerAttackRange, m_layerMask);
+        m_attackable = Physics2D.OverlapCircle(transform.position, m_playerAttackRange, m_layerMask);
 
-        if (m_monster != null)
+        if (m_attackable != null)
         {
-            m_monster.GetComponent<IDamageable>().TakeDamage(m_playerMeleeAttack);
+            m_attackable.GetComponent<IDamageable>().TakeDamage(m_playerMeleeAttack);
         }
     }
 
