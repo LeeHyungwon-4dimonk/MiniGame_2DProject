@@ -261,5 +261,6 @@ public class Player_Die : PlayerState
     {
         m_player.Anim.Play(m_player.DIE_HASH);
         GameManager.Instance.GameOver();
+        m_player.SFXCtrl.StopSFX();
     }
 }
