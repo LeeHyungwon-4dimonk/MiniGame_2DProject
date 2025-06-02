@@ -15,6 +15,7 @@ public class GameManager : Singleton<GameManager>
     private static int m_playerCurMp;
 
     private static bool m_GameOver = false;
+    private static bool m_GameClear = false;
     private static bool m_GamePaused = false;
 
     private void Awake() => Init();
@@ -41,6 +42,9 @@ public class GameManager : Singleton<GameManager>
         m_playerMaxMp = 5;
         m_playerCurMp = m_playerMaxMp;
         m_score = 0;
+        m_GameOver = false;
+        m_GameClear = false;
+        m_GamePaused = false;
         AudioManager.Instance.PlayBgm(true);
     }
 
@@ -48,12 +52,25 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("Game Over");
         AudioManager.Instance.PlayBgm(false);
+        
         m_GameOver = true;
     }
 
     public bool IsGameOver()
     {
         return m_GameOver;
+    }
+
+    public void GameClear()
+    {
+        Debug.Log("Game Clear");
+        AudioManager.Instance.PlayBgm(false);
+        m_GameClear = true;
+    }
+
+    public bool IsGameClear()
+    {
+        return m_GameClear;
     }
 
     public void Pause(bool isPause)

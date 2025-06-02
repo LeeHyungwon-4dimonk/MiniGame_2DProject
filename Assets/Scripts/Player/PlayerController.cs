@@ -70,15 +70,19 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if (!GameManager.Instance.IsGameOver())
+        if (!GameManager.Instance.IsGameOver() && !GameManager.Instance.IsGameClear())
         {
             StateMach.Update();
+        }
+        else
+        {
+            SFXCtrl.StopSFX();
         }
     }
 
     private void FixedUpdate()
     {
-        if (!GameManager.Instance.IsGameOver())
+        if (!GameManager.Instance.IsGameOver() && !GameManager.Instance.IsGameClear())
         {
             StateMach.FixedUpdate();
         }

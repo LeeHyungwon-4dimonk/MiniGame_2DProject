@@ -17,6 +17,7 @@ public class TitleSceneUI : MonoBehaviour
     private void GameStart()
     {
         SceneChanger.Instance.SceneChange(SceneName.Stage1Scene);
+        GameManager.Instance.GameStart();
         AudioManager.Instance.PlayBgm(true);
     }
 
