@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8541442ddab63f4f8543382f7e7d3fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_normalMonsterData: {fileID: 11400000, guid: e301bcfb84d016b438496151ea3b5d54, type: 2}
+  NormalMobData: {fileID: 11400000, guid: e301bcfb84d016b438496151ea3b5d54, type: 2}
   TargetLayer:
     serializedVersion: 2
     m_Bits: 64

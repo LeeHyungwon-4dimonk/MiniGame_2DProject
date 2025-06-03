@@ -8,8 +8,6 @@ public class NormalMonsterData : MonsterData
 {
     // 몬스터 탐지 시야
     public float MonsterSight;
-    // 일반 몬스터는 잡을 시에 점수를 줌
-    public int Score;
 
     // 몬스터 공격
     public override void Attack(PlayerController controller)

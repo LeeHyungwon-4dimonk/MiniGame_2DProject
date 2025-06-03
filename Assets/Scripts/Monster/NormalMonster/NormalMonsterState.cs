@@ -29,7 +29,7 @@ public class NormalMonsterState : BaseState
     // 플레이어 추적
     private void DetectPlayer()
     {
-        m_normalMonster.Player = Physics2D.OverlapCircle(m_normalMonster.transform.position, m_normalMonster.m_normalMonsterData.MonsterSight, m_normalMonster.TargetLayer);
+        m_normalMonster.Player = Physics2D.OverlapCircle(m_normalMonster.transform.position, m_normalMonster.NormalMobData.MonsterSight, m_normalMonster.TargetLayer);
 
         // 플레이어가 존재, y축 범위 제한하여 바닥 밑/위 플레이어는 인식 못함
         // 쫓을 수 있는 상태일 때 추격 상태로 전환
@@ -170,7 +170,7 @@ public class NormalMonsterState_Walk : NormalMonsterState
     public override void FixedUpdate()
     {
         if (Trackable())
-            m_normalMonster.Rigid.velocity = new Vector2(m_normalMonster.PatrolVec.x * m_normalMonster.m_normalMonsterData.MonsterMoveSpeed, m_normalMonster.Rigid.velocity.y);
+            m_normalMonster.Rigid.velocity = new Vector2(m_normalMonster.PatrolVec.x * m_normalMonster.NormalMobData.MonsterMoveSpeed, m_normalMonster.Rigid.velocity.y);
     }
 }
 
@@ -226,7 +226,7 @@ public class NormalMonsterState_Trace : NormalMonsterState
     public override void FixedUpdate()
     {
         if (Trackable())
-            m_normalMonster.Rigid.velocity = new Vector2(targetPos.x * m_normalMonster.m_normalMonsterData.MonsterMoveSpeed, m_normalMonster.Rigid.velocity.y);
+            m_normalMonster.Rigid.velocity = new Vector2(targetPos.x * m_normalMonster.NormalMobData.MonsterMoveSpeed, m_normalMonster.Rigid.velocity.y);
     }
 }
 

@@ -15,6 +15,7 @@ public abstract class MonsterData : ScriptableObject
     public int MonsterHp;
     public int MonsterAtk;
     public int MonsterMoveSpeed;
+    public int Score;
 
     // 몬스터 공격
     public abstract void Attack(PlayerController player);

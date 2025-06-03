@@ -13,7 +13,7 @@ public class NormalMonsterController : PooledObject, IDamageable
 {
     // 노멀 몬스터 데이터(스크립터블 오브젝트)
     // 생성할 노멀 몬스터 스크립트블 오브젝트를 참조해주세요
-    [SerializeField] public NormalMonsterData m_normalMonsterData;
+    [SerializeField] public NormalMonsterData NormalMobData;
     // 공격 대상 레이어 - 플레이어로 설정해주세요
     [SerializeField] public LayerMask TargetLayer;
     // 추격 가능여부 판정 레이어 - Ground로 설정해주세요
@@ -64,7 +64,7 @@ public class NormalMonsterController : PooledObject, IDamageable
         Anim = GetComponent<Animator>();
         TryGetComponent<SFXController>(out SFXCtrl);
         PatrolVec = Vector2.right;
-        m_normalMonsterHp = m_normalMonsterData.MonsterHp;
+        m_normalMonsterHp = NormalMobData.MonsterHp;
         StateMachineInit();
     }
 
@@ -128,7 +128,7 @@ public class NormalMonsterController : PooledObject, IDamageable
         if (m_normalMonsterHp <= 0)
         {
             m_normalMonsterHp = 0;
-            GameManager.Instance.ScorePlus(m_normalMonsterData.Score);
+            GameManager.Instance.ScorePlus(NormalMobData.Score);
             StateMach.ChangeState(StateMach.StateDic[EState.Die]);
         }
     }
@@ -143,7 +143,7 @@ public class NormalMonsterController : PooledObject, IDamageable
         Player = Physics2D.OverlapCircle(transform.position + Vector3.up, m_monsterAttackRange, TargetLayer);
         if (Player != null)
         {
-            Player.GetComponent<IDamageable>().TakeDamage(m_normalMonsterData.MonsterAtk);
+            Player.GetComponent<IDamageable>().TakeDamage(NormalMobData.MonsterAtk);
         }
     }
 
@@ -170,7 +170,7 @@ public class NormalMonsterController : PooledObject, IDamageable
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, m_normalMonsterData.MonsterSight);
+        Gizmos.DrawWireSphere(transform.position, NormalMobData.MonsterSight);
         Gizmos.DrawWireSphere(transform.position + Vector3.up, 1.5f);
     }
 }

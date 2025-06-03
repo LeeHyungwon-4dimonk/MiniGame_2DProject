@@ -442,7 +442,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.49, y: -0.82}
+  m_AnchoredPosition: {x: -2.56, y: -0.26}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &290894774
@@ -577,7 +577,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15.38, y: 3.2}
+  m_AnchoredPosition: {x: 13.75, y: 3.48}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &358796298
@@ -7682,7 +7682,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB9C8\uBC95 \uACF5\uACA9\uB3C4 \uAC00\uB2A5\uD574\uC694!\n\n\uB9C8\uBC95
+  m_text: "\uB9C8\uBC95 \uACF5\uACA9\uB3C4 \uAC00\uB2A5\uD574\uC694!\n\uCDA9\uC804\uB7C9\uC5D0
+    \uB530\uB77C \uB370\uBBF8\uC9C0\uB3C4 \uC99D\uAC00\uD55C\uB2F5\uB2C8\uB2E4!\n\n\uB9C8\uBC95
     \uACF5\uACA9 : \uB9C8\uC6B0\uC2A4 \uC6B0\uD074\uB9AD"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: da7168b661dda9c419c2b3387b9b6fe0, type: 2}
@@ -8207,7 +8208,7 @@ Transform:
   m_GameObject: {fileID: 1888814680}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.759438, y: -3.060017, z: -5}
+  m_LocalPosition: {x: -24.96, y: -3.01, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
