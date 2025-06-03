@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &376103333918272945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6202987797190482695}
+  - component: {fileID: 2421977336831709801}
+  m_Layer: 9
+  m_Name: MonsterMuzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6202987797190482695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376103333918272945}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.86, y: -4.17, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5471755022591742265}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2421977336831709801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376103333918272945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 527b33d2af96010438999d5ac0df05da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_spellPrefab: {fileID: 1616621796156978655, guid: 7fbca11c01d4f724d93bc4409397c349, type: 3}
+  m_spellSpeed: 10
 --- !u!1 &5879128242839025513
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,6 +59,9 @@ GameObject:
   - component: {fileID: 8355306936483616701}
   - component: {fileID: 7461233392754249248}
   - component: {fileID: 1899027507392746749}
+  - component: {fileID: -3811846096914214758}
+  - component: {fileID: 1385354079594338268}
+  - component: {fileID: 9097029998312519828}
   m_Layer: 9
   m_Name: Demon Slime
   m_TagString: Enemy
@@ -32,7 +81,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.72, y: 0.72, z: 0.72}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6202987797190482695}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3793220073646016973
@@ -140,8 +190,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2677512, y: -2.6328197}
-  m_Size: {x: 2.4415224, y: 4.5229}
+  m_Offset: {x: 0.13678735, y: -2.546009}
+  m_Size: {x: 2.6076396, y: 5.0437613}
   m_Direction: 0
 --- !u!50 &1899027507392746749
 Rigidbody2D:
@@ -170,3 +220,155 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-3811846096914214758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5879128242839025513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14380bf2ee59c35499a7862ffa86ae7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BossMobData: {fileID: 11400000, guid: 3178ebd7db6860c4c9feb7ad7893a951, type: 2}
+  TargetLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  m_potions:
+  - {fileID: 8208140684372255417, guid: 0d454c2b7cbfb504e9f62ce7b81b1b27, type: 3}
+  - {fileID: 8208140684372255417, guid: 45f3f82cb28953643a95cea198931e9b, type: 3}
+  m_monsterAttackRange: 4
+  m_monsterSpellCooltime: 0
+  m_stunCoolTime: 0
+  Rigid: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  Anim: {fileID: 0}
+  SFXCtrl: {fileID: 0}
+  Muzzle: {fileID: 0}
+  IsMove: 0
+  IsStun: 0
+  IsDead: 0
+  Player: {fileID: 0}
+  TargetTransform: {fileID: 0}
+  AttackDelay: 0
+  StunDelay: 0
+  DieDelay: 0
+  PatrolVec: {x: 0, y: 0}
+--- !u!114 &1385354079594338268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5879128242839025513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b318483368b1542a44e6b064e8497a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_sfx:
+  - Name: Damage
+    Clip: {fileID: 8300000, guid: 681daf888f4fe9e44b8514dac9708758, type: 3}
+  - Name: Attack
+    Clip: {fileID: 8300000, guid: 0001f0e3f5a485241a6dcd1f985bb0e1, type: 3}
+--- !u!82 &9097029998312519828
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5879128242839025513}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

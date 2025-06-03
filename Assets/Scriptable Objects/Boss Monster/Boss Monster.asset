@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c92ea9d42d7bad24da7b52d8e20195df, type: 3}
-  m_Name: Boss_DemonSlime
+  m_Name: Boss Monster
   m_EditorClassIdentifier: 
   Name: Demon Slime
   Prefab: {fileID: 5879128242839025513, guid: 1dad535436e72b64cbe7e8de53b460e4, type: 3}
   MonsterHp: 30
   MonsterAtk: 4
-  MonsterMoveSpeed: 3
+  MonsterMoveSpeed: 2
   Score: 1000
+  SkillCoolTime: 10
