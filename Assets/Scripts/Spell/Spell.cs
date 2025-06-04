@@ -34,7 +34,7 @@ public class Spell : PooledObject
         m_animator.SetTrigger("Burst");
 
         // 차지 시간에 따른 스펠 데미지 증가 반영
-        // 1.5 초 차지할 때마다 데미지가 1 늘어나며, 최대 데미지 5 / 최대 차징 시간 6초로 지정함
+        // ChargeTime 초 차지할 때마다 데미지가 1 늘어나며, 최대 데미지 maxDamage로 지정함
         // 밸런싱이 필요할 경우 인스펙터 상 수치를 수정할 것
         // 충돌 버그로 인해 데미지가 중첩하여 들어가지 않도록 처리하기 위해 몬스터 충돌과 동시에 충돌체를 꺼 버림
         if (collision.gameObject.CompareTag("Enemy"))

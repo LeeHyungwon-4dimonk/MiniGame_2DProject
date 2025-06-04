@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// ≈∏¿Ã∆≤æ¿ UI
+/// </summary>
 public class TitleSceneUI : MonoBehaviour
 {
     [SerializeField] private Button m_startButton;

@@ -12,14 +12,14 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] public float MoveSpeed;
     // 플레이어 점프력(밸런싱)
     [SerializeField] public float JumpPow;
-    // 플레이어 공격력(밸런싱)
-    [SerializeField] private int m_playerMeleeAttack;
-    // 플레이어 근접공격 범위(밸런싱)
-    [SerializeField] private float m_playerAttackRange;
     // 플레이어 스펠 공격 쿨타임(밸런싱)
     [SerializeField] public float SpellCoolTime;
     // 플레이어 스펠 마나 소모량(밸런싱)
     [SerializeField] public int ManaConsumption;
+    // 플레이어 공격력(밸런싱)
+    [SerializeField] private int m_playerMeleeAttack;
+    // 플레이어 근접공격 범위(밸런싱)
+    [SerializeField] private float m_playerAttackRange;
 
     [Header("Animation Delay")]
     // 플레이어 공격 애니메이션 출력 딜레이
@@ -162,6 +162,10 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
     }
 
+    /// <summary>
+    /// 타임라인용 움직임 제한 Signal 함수
+    /// </summary>
+    /// <param name="isActive"></param>
     public void Controllable(bool isActive)
     {
         m_isActiveControl = isActive;
@@ -176,8 +180,10 @@ public class PlayerController : MonoBehaviour, IDamageable
         Anim.SetBool("IsJump", IsJump);
     }
 
+    /*
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position + Vector3.up, m_playerAttackRange);
     }
+    */
 }

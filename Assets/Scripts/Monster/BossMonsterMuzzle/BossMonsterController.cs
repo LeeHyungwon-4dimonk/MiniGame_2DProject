@@ -194,6 +194,10 @@ public class BossMonsterController : MonoBehaviour, IDamageable
         }
     }
 
+    /// <summary>
+    /// 타임라인용 움직임 제한 Signal 함수
+    /// </summary>
+    /// <param name="isActive"></param>
     public void Controllable(bool isActive)
     {
         m_isActiveControl = isActive;

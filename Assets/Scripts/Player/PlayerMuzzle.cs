@@ -1,6 +1,10 @@
 using DesignPattern;
 using UnityEngine;
 
+/// <summary>
+/// 플레이어 스펠 발사 Muzzle
+/// * 스펠 속도 조정시 Spell Speed 인스펙터로 조정
+/// </summary>
 public class PlayerMuzzle : MonoBehaviour
 {
     // 스펠 프리팹
