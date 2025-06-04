@@ -115,7 +115,7 @@ public class NormalMonsterState_Idle : NormalMonsterState
         base.Update();
         waitedTime += Time.deltaTime;
         // 3초 대기 후 걷기로 전환
-        if (waitedTime > 3)
+        if (waitedTime > m_normalMonster.NormalMobData.RestDelay)
         {
             m_normalMonster.Rigid.velocity = Vector2.zero;
             m_normalMonster.StateMach.ChangeState(m_normalMonster.StateMach.StateDic[EState.Walk]);
@@ -216,8 +216,8 @@ public class NormalMonsterState_Trace : NormalMonsterState
         }
 
         // 플레이어가 자신의 공격범위 안으로 들어왔을 때 공격 상태로 전환
-        if (Trackable() && Mathf.Abs(m_normalMonster.TargetTransform.position.x - m_normalMonster.transform.position.x) < 1.5f
-            && Mathf.Abs(m_normalMonster.TargetTransform.position.y - m_normalMonster.transform.position.y) < 4f)
+        if (Trackable() && Mathf.Abs(m_normalMonster.TargetTransform.position.x - m_normalMonster.transform.position.x) < m_normalMonster.NormalMobData.AttackRange_X
+            && Mathf.Abs(m_normalMonster.TargetTransform.position.y - m_normalMonster.transform.position.y) < m_normalMonster.NormalMobData.AttackRange_Y)
         {
             m_normalMonster.StateMach.ChangeState(m_normalMonster.StateMach.StateDic[EState.MeleeAttack]);
         }
@@ -255,7 +255,7 @@ public class NormalMonsterState_MeleeAttack : NormalMonsterState
         m_normalMonster.AttackDelay += Time.deltaTime;
 
         // 공격 애니메이션 출력 후 대기 상태로 전환
-        if (m_normalMonster.AttackDelay > 1.5f)
+        if (m_normalMonster.AttackDelay > m_normalMonster.NormalMobData.MeleeAttackDelay)
         {
             m_normalMonster.AttackDelay = 0;
             m_normalMonster.StateMach.ChangeState(m_normalMonster.StateMach.StateDic[EState.Idle]);
@@ -289,7 +289,7 @@ public class NormalMonsterState_Stun : NormalMonsterState
         m_normalMonster.StunDelay += Time.deltaTime;
 
         // 스턴 딜레이를 조정하여 밸런싱
-        if (m_normalMonster.StunDelay > 0.3f)
+        if (m_normalMonster.StunDelay > m_normalMonster.NormalMobData.StunCoolTime)
         {
             m_normalMonster.StunDelay = 0;
             m_normalMonster.IsStun = false;
@@ -325,7 +325,7 @@ public class NormalMonsterState_Die : NormalMonsterState
         base.Update();
 
         m_normalMonster.DieDelay += Time.deltaTime;
-        if (m_normalMonster.DieDelay > 2f)
+        if (m_normalMonster.DieDelay > m_normalMonster.NormalMobData.DieDelay)
         {
             m_normalMonster.ReturnPool();
         }

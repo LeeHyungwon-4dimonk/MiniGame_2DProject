@@ -11,18 +11,18 @@ public class BossMonsterState : BaseState
         m_bossMonster = _bossMonster;
     }
 
-    public override void Enter()
-    {
-    }
+    public override void Enter() { }
 
-    public override void Update()
-    {
-
-    }
+    public override void Update() { }
 
     public override void Exit() { }
 }
 
+/// <summary>
+/// 몬스터 대기 상태
+/// FixedUpdate : X
+/// Transition -> 추격
+/// </summary>
 public class BossMonsterState_Idle : BossMonsterState
 {
     float m_delay;
@@ -42,7 +42,7 @@ public class BossMonsterState_Idle : BossMonsterState
     public override void Update()
     {
         m_delay += Time.deltaTime;
-        if (m_delay > 3)
+        if (m_delay > m_bossMonster.BossMobData.RestDelay)
         {
             m_delay = 0;
             m_bossMonster.StateMach.ChangeState(m_bossMonster.StateMach.StateDic[EState.Trace]);
@@ -84,8 +84,8 @@ public class BossMonsterState_Trace : BossMonsterState
         }
 
         // 플레이어가 자신의 공격범위 안으로 들어왔을 때 공격 상태로 전환
-        if (Mathf.Abs(m_targetTransform.position.x - m_bossMonster.transform.position.x) < 3f
-            && Mathf.Abs(m_targetTransform.position.y - m_bossMonster.transform.position.y) < 4f)
+        if (Mathf.Abs(m_targetTransform.position.x - m_bossMonster.transform.position.x) < m_bossMonster.BossMobData.AttackRange_X
+            && Mathf.Abs(m_targetTransform.position.y - m_bossMonster.transform.position.y) < m_bossMonster.BossMobData.AttackRange_Y)
         {
             m_bossMonster.StateMach.ChangeState(m_bossMonster.StateMach.StateDic[EState.MeleeAttack]);
         }
@@ -123,7 +123,7 @@ public class BossMonsterState_MeleeAttack : BossMonsterState
         m_bossMonster.AttackDelay += Time.deltaTime;
 
         // 공격 애니메이션 출력 후 대기 상태로 전환
-        if (m_bossMonster.AttackDelay > 1.4f)
+        if (m_bossMonster.AttackDelay > m_bossMonster.BossMobData.MeleeAttackDelay)
         {
             m_bossMonster.AttackDelay = 0;
             m_bossMonster.StateMach.ChangeState(m_bossMonster.StateMach.StateDic[EState.Idle]);
@@ -157,7 +157,7 @@ public class BossMonsterState_Stun : BossMonsterState
         m_bossMonster.StunDelay += Time.deltaTime;
 
         // 스턴 딜레이를 조정하여 밸런싱
-        if (m_bossMonster.StunDelay > 0.2f)
+        if (m_bossMonster.StunDelay > m_bossMonster.BossMobData.StunCoolTime)
         {
             m_bossMonster.StunDelay = 0;
             m_bossMonster.IsStun = false;
@@ -193,7 +193,7 @@ public class BossMonsterState_Die : BossMonsterState
         base.Update();
 
         m_bossMonster.DieDelay += Time.deltaTime;
-        if (m_bossMonster.DieDelay > 2f)
+        if (m_bossMonster.DieDelay > m_bossMonster.BossMobData.DieDelay)
         {
             m_bossMonster.gameObject.SetActive(false);
         }

@@ -2,6 +2,10 @@ using UnityEngine;
 using DesignPattern;
 public class MonsterSpell : PooledObject
 {
+    // 보스 몬스터 스크립터블 오브젝트
+    [SerializeField] private BossMonsterData m_bossMobData;
+
+    // 스펠의 충돌체
     private BoxCollider2D m_boxCollider;
 
     private void Awake()
@@ -18,7 +22,7 @@ public class MonsterSpell : PooledObject
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<IDamageable>().TakeDamage(2);
+            collision.gameObject.GetComponent<IDamageable>().TakeDamage(m_bossMobData.SpellAttackDamage);
             m_boxCollider.enabled = false;            
         }
         ReturnPool();

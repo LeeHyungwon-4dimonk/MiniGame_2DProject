@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_spellPrefab: {fileID: 1616621796156978655, guid: 7fbca11c01d4f724d93bc4409397c349, type: 3}
-  m_spellSpeed: 10
+  m_bossMobData: {fileID: 11400000, guid: 3178ebd7db6860c4c9feb7ad7893a951, type: 2}
 --- !u!1 &5879128242839025513
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,8 +190,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.13678735, y: -2.546009}
-  m_Size: {x: 2.6076396, y: 5.0437613}
+  m_Offset: {x: 0.08335378, y: 2.3623412}
+  m_Size: {x: 3.8422847, y: 4.6359754}
   m_Direction: 0
 --- !u!50 &1899027507392746749
 Rigidbody2D:
@@ -242,9 +242,6 @@ MonoBehaviour:
   m_potions:
   - {fileID: 8208140684372255417, guid: 0d454c2b7cbfb504e9f62ce7b81b1b27, type: 3}
   - {fileID: 8208140684372255417, guid: 45f3f82cb28953643a95cea198931e9b, type: 3}
-  m_monsterAttackRange: 4
-  m_monsterSpellCooltime: 0
-  m_stunCoolTime: 0
   Rigid: {fileID: 0}
   SpriteRenderer: {fileID: 0}
   Anim: {fileID: 0}

@@ -4,12 +4,12 @@ using UnityEngine;
 public class BossMonsterMuzzle : MonoBehaviour
 {
     // 스펠 프리팹
-    [SerializeField] MonsterSpell m_spellPrefab;
+    [SerializeField] private MonsterSpell m_spellPrefab;
 
-    // 스펠 발사 속도(밸런싱)
-    [SerializeField] float m_spellSpeed;
+    // 보스 몬스터 스크립터블 오브젝트
+    [SerializeField] private BossMonsterData m_bossMobData;
 
-    // 몬스터 컴포넌트
+    // 보스 몬스터 컴포넌트
     private SpriteRenderer m_bossSpriteRenderer;
 
     // 스펠 프리팹 컴포넌트
@@ -35,16 +35,16 @@ public class BossMonsterMuzzle : MonoBehaviour
         // 보는 방향에 따라 Muzzle의 위치를 이동시키고 발사 방향 결정 및 스펠 애니메이션 출력 방향 결정
         if (m_bossSpriteRenderer.flipX == true)
         {
-            gameObject.transform.localPosition = new Vector3(4f, -3.8f, 0);
+            gameObject.transform.localPosition = new Vector3(4f, 1.2f, 0);
             spell.transform.position = gameObject.transform.position;
-            m_spellRigid.AddForce(Vector2.right * m_spellSpeed, ForceMode2D.Impulse);
+            m_spellRigid.AddForce(Vector2.right * m_bossMobData.SpellSpeed, ForceMode2D.Impulse);
             m_spellSpriteRenderer.flipX = false;
         }
         else
         {
-            gameObject.transform.localPosition = new Vector3(-4f, -3.8f, 0);
+            gameObject.transform.localPosition = new Vector3(-4f, 1.2f, 0);
             spell.transform.position = gameObject.transform.position;
-            m_spellRigid.AddForce(Vector2.left * m_spellSpeed, ForceMode2D.Impulse);
+            m_spellRigid.AddForce(Vector2.left * m_bossMobData.SpellSpeed, ForceMode2D.Impulse);
             m_spellSpriteRenderer.flipX = true;
         }
     }

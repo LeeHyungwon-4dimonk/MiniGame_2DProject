@@ -8,6 +8,7 @@ using UnityEngine;
 /// 또한 오브젝트 풀 패턴으로 구현되어
 /// 몬스터를 한 번에 여러 마리를 소환하거나 리젠에 사용할 수 있음
 /// 몬스터 프리팹은 이 컴포넌트로 만드나, 몬스터 생성은 생성 프리팹을 따로 만들 것
+/// * 몬스터 수치 밸런싱이 필요할 경우 스크립터블 오브젝트에서 내용을 수정할 것
 /// </summary>
 public class NormalMonsterController : PooledObject, IDamageable
 {
@@ -20,8 +21,6 @@ public class NormalMonsterController : PooledObject, IDamageable
     [SerializeField] public LayerMask GroundLayer;
     // 몬스터가 죽었을 때 드랍하는 포션 - 필요에 따라 설정해주세요
     [SerializeField] private GameObject[] m_potions;
-    // 몬스터 근접공격 범위(밸런싱)
-    [SerializeField] private float m_monsterAttackRange;
 
     // 컴포넌트 참조
     public StateMachine StateMach;
@@ -140,7 +139,7 @@ public class NormalMonsterController : PooledObject, IDamageable
     /// </summary>
     public void Attack()
     {
-        Player = Physics2D.OverlapCircle(transform.position + Vector3.up, m_monsterAttackRange, TargetLayer);
+        Player = Physics2D.OverlapCircle(transform.position + Vector3.up, NormalMobData.AttackRange, TargetLayer);
         if (Player != null)
         {
             Player.GetComponent<IDamageable>().TakeDamage(NormalMobData.MonsterAtk);
@@ -151,17 +150,18 @@ public class NormalMonsterController : PooledObject, IDamageable
     /// 포션은 랜덤한 확률로 드랍하는 시스템
     /// 시스템상 체력 포션과 마나 포션 중 한 종류만 드랍하며(두 가지 동시드랍 불가)
     /// 확률은 11% (1/9) 로 설정함(밸런싱)
+    ///  => 테스트 진행 결과 실제 드랍 수치가 너무 낮은 것 같아 22%로 변경 (2/9) // #1 밸런스 패치
     /// </summary>
     private void DropPotion()
     {
         if(IsDead)
         {
             int rand = Random.Range(0, 10);
-            if(rand == 7)
+            if (rand == 6 || rand == 7)
             {
                 Instantiate(m_potions[0], transform.position, Quaternion.identity);
             }
-            if(rand == 8)
+            if (rand == 8 || rand == 9)
             {
                 Instantiate(m_potions[1], transform.position, Quaternion.identity);
             }
@@ -171,6 +171,6 @@ public class NormalMonsterController : PooledObject, IDamageable
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, NormalMobData.MonsterSight);
-        Gizmos.DrawWireSphere(transform.position + Vector3.up, 1.5f);
+        Gizmos.DrawWireSphere(transform.position + Vector3.up, NormalMobData.AttackRange);
     }
 }

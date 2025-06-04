@@ -17,5 +17,12 @@ MonoBehaviour:
   MonsterHp: 4
   MonsterAtk: 1
   MonsterMoveSpeed: 5
-  MonsterSight: 5
   Score: 200
+  StunCoolTime: 0.3
+  RestDelay: 3
+  DieDelay: 2
+  MonsterSight: 5
+  AttackRange: 2
+  AttackRange_X: 1.5
+  AttackRange_Y: 4
+  MeleeAttackDelay: 1.4

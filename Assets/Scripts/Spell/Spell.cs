@@ -10,7 +10,6 @@ public class Spell : PooledObject
 
     private Coroutine m_coroutine;
 
-
     private void Awake()
     {
         m_animator = GetComponent<Animator>();

@@ -18,4 +18,14 @@ MonoBehaviour:
   MonsterAtk: 4
   MonsterMoveSpeed: 2
   Score: 1000
+  StunApplyCoolTime: 3
+  StunCoolTime: 0.2
+  RestDelay: 3
+  DieDelay: 2
+  SpellAttackDamage: 2
+  SpellSpeed: 10
   SkillCoolTime: 10
+  AttackRange: 4
+  AttackRange_X: 3
+  AttackRange_Y: 4
+  MeleeAttackDelay: 1.4
