@@ -541,6 +541,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Demon Slime
       objectReference: {fileID: 0}
+    - target: {fileID: 7461233392754249248, guid: 1dad535436e72b64cbe7e8de53b460e4, type: 3}
+      propertyPath: m_Size.x
+      value: 3.8422847
+      objectReference: {fileID: 0}
+    - target: {fileID: 7461233392754249248, guid: 1dad535436e72b64cbe7e8de53b460e4, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.08335378
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1502,7 +1510,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.03333336, y: 0.03333336, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -4911,7 +4919,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.03333336, y: 0.03333336, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -7233,32 +7241,32 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 1220715104}
     m_ColliderPaths:
-    - - X: 52000000
-        Y: 87000000
-      - X: 42000000
-        Y: 87000000
-      - X: 42000000
-        Y: -143000000
-      - X: -528000000
-        Y: -143000000
-      - X: -528000000
-        Y: 87000000
-      - X: -538000000
-        Y: 87000000
-      - X: -538000000
-        Y: -153000000
-      - X: 52000000
-        Y: -153000000
+    - - X: 52333332
+        Y: 87333336
+      - X: 41666664
+        Y: 87333336
+      - X: 41666664
+        Y: -142666672
+      - X: -527666656
+        Y: -142666672
+      - X: -527666656
+        Y: 87333336
+      - X: -538333312
+        Y: 87333336
+      - X: -538333312
+        Y: -153333344
+      - X: 52333332
+        Y: -153333344
   m_CompositePaths:
     m_Paths:
-    - - {x: 5.1999707, y: -15.3}
-      - {x: 5.1999707, y: 8.7}
-      - {x: 4.2000003, y: 8.69997}
-      - {x: 4.1999702, y: -14.3}
-      - {x: -52.8, y: -14.299972}
-      - {x: -52.80003, y: 8.7}
-      - {x: -53.8, y: 8.69997}
-      - {x: -53.79997, y: -15.3}
+    - - {x: 5.233304, y: -15.333335}
+      - {x: 5.233304, y: 8.733334}
+      - {x: 4.1666665, y: 8.733304}
+      - {x: 4.166637, y: -14.266667}
+      - {x: -52.766666, y: -14.266639}
+      - {x: -52.766693, y: 8.733334}
+      - {x: -53.833332, y: 8.733304}
+      - {x: -53.8333, y: -15.333335}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0

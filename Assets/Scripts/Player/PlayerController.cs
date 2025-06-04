@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     /// </summary>
     public void Attack()
     {
-        m_attackable = Physics2D.OverlapCircle(transform.position, m_playerAttackRange, m_layerMask);
+        m_attackable = Physics2D.OverlapCircle(transform.position + Vector3.up, m_playerAttackRange, m_layerMask);
 
         if (m_attackable != null)
         {
@@ -156,5 +156,10 @@ public class PlayerController : MonoBehaviour, IDamageable
         IsJump = false;
         IsLand = true;
         Anim.SetBool("IsJump", IsJump);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position + Vector3.up, m_playerAttackRange);
     }
 }
