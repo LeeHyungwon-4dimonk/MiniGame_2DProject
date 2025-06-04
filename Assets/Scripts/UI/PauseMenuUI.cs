@@ -60,11 +60,13 @@ public class PauseMenuUI : MonoBehaviour
     private void GamePause()
     {
         GameManager.Instance.Pause(true);
+        GameManager.Instance.TryPause(true);
     }
 
     private void GameResume()
     {
         GameManager.Instance.Pause(false);
+        GameManager.Instance.TryPause(false);
     }
 
     #endregion
