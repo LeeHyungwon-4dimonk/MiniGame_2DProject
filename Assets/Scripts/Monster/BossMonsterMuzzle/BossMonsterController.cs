@@ -55,6 +55,8 @@ public class BossMonsterController : MonoBehaviour, IDamageable
     // 보스몬스터 스턴 쿨타임
     private float m_stunCoolTime;
 
+    private bool m_isActiveControl = true;
+
     private void Awake() => Init();
 
     private void Init()
@@ -66,7 +68,7 @@ public class BossMonsterController : MonoBehaviour, IDamageable
         TryGetComponent<SFXController>(out SFXCtrl);
         PatrolVec = Vector2.right;
         m_bossMonsterHp = BossMobData.MonsterHp;
-        m_monsterSpellCooltime = BossMobData.SkillCoolTime;
+        m_monsterSpellCooltime = 3;
         StateMachineInit();
     }
     private void StateMachineInit()
@@ -83,8 +85,8 @@ public class BossMonsterController : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        // 게임이 끝난 상태가 아니면
-        if (!GameManager.Instance.IsGameOver() && !GameManager.Instance.IsGameClear())
+        // 게임이 끝난 상태가 아니고, 몬스터가 조종 가능한 상태일 때
+        if (m_isActiveControl && !GameManager.Instance.IsGameOver() && !GameManager.Instance.IsGameClear())
         {
             StateMach.Update();
         }
@@ -99,8 +101,8 @@ public class BossMonsterController : MonoBehaviour, IDamageable
 
     private void FixedUpdate()
     {
-        // 게임이 끝난 상태가 아니면
-        if (!GameManager.Instance.IsGameOver() && !GameManager.Instance.IsGameClear())
+        // 게임이 끝난 상태가 아니고, 몬스터가 조종 가능한 상태일 때
+        if (m_isActiveControl && !GameManager.Instance.IsGameOver() && !GameManager.Instance.IsGameClear())
         {
             StateMach.FixedUpdate();
         }
@@ -191,6 +193,12 @@ public class BossMonsterController : MonoBehaviour, IDamageable
             }
         }
     }
+
+    public void Controllable(bool isActive)
+    {
+        m_isActiveControl = isActive;
+    }
+
     private void OnDrawGizmos()
     {
         //Gizmos.DrawWireSphere(transform.position, BossMobData.MonsterSight);

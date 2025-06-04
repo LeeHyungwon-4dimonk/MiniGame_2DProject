@@ -492,7 +492,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1861571151}
     m_Modifications:
     - target: {fileID: 3845748111324687916, guid: cfec580b27e636c41855bfd75fd0f679, type: 3}
       propertyPath: m_Pivot.x
@@ -583,6 +583,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfec580b27e636c41855bfd75fd0f679, type: 3}
+--- !u!224 &297673238 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3845748111324687916, guid: cfec580b27e636c41855bfd75fd0f679, type: 3}
+  m_PrefabInstance: {fileID: 297673237}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &358796296
 GameObject:
   m_ObjectHideFlags: 0
@@ -7734,6 +7739,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1861571150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1861571151}
+  m_Layer: 0
+  m_Name: UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1861571151
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861571150}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -32.34783, y: 5.5893188, z: -0.14245254}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2036489245}
+  - {fileID: 297673238}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1885511114
 GameObject:
   m_ObjectHideFlags: 0
@@ -8102,7 +8140,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1861571151}
     m_Modifications:
     - target: {fileID: 7910527603570032454, guid: 5a1c78e2f9a7ff249aee34c733c84e4a, type: 3}
       propertyPath: m_Name
@@ -8193,6 +8231,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a1c78e2f9a7ff249aee34c733c84e4a, type: 3}
+--- !u!224 &2036489245 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9027351891872202751, guid: 5a1c78e2f9a7ff249aee34c733c84e4a, type: 3}
+  m_PrefabInstance: {fileID: 2036489244}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2113999708
 GameObject:
   m_ObjectHideFlags: 3
@@ -8382,5 +8425,4 @@ SceneRoots:
   - {fileID: 509463586}
   - {fileID: 1583323719}
   - {fileID: 867714987}
-  - {fileID: 2036489244}
-  - {fileID: 297673237}
+  - {fileID: 1861571151}

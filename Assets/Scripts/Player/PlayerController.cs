@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     // 플레이어 몬스터 거리 판정용
     private Collider2D m_attackable;
 
+    private bool m_isActiveControl = true;
     private void Awake() => Init();
 
     private void Init()
@@ -103,8 +104,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        // 게임이 끝난 상태가 아니면
-        if (!GameManager.Instance.IsGameOver() && !GameManager.Instance.IsGameClear())
+        // 게임이 끝난 상태가 아니고, 플레이어가 조종 가능한 상태일 때
+        if (m_isActiveControl && !GameManager.Instance.IsGameOver() && !GameManager.Instance.IsGameClear())
         {
             StateMach.Update();
         }
@@ -118,8 +119,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void FixedUpdate()
     {
-        // 게임이 끝난 상태가 아니면
-        if (!GameManager.Instance.IsGameOver() && !GameManager.Instance.IsGameClear())
+        // 게임이 끝난 상태가 아니고, 플레이어가 조종 가능한 상태일 때
+        if (m_isActiveControl && !GameManager.Instance.IsGameOver() && !GameManager.Instance.IsGameClear())
         {
             StateMach.FixedUpdate();
         }
@@ -160,6 +161,12 @@ public class PlayerController : MonoBehaviour, IDamageable
             m_attackable.GetComponent<IDamageable>().TakeDamage(m_playerMeleeAttack);
         }
     }
+
+    public void Controllable(bool isActive)
+    {
+        m_isActiveControl = isActive;
+    }
+
 
     // 플레이어 바닥 접촉 시 점프 가능
     public void OnCollisionEnter2D(Collision2D collision)
