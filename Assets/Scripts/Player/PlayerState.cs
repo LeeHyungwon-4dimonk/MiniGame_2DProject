@@ -28,11 +28,12 @@ public class PlayerState : BaseState
         }
 
         // 플레이어가 차징 상태나 스펠 공격 발사중이 아닐 때
+        // 플레이어의 마우스가 일시정지 버튼에 올라가 있는 것이 아닐 때
         // 플레이어는 마우스 클릭을 했을 때 근접 공격을 할 수 있음
         // (모션 캔슬 방지용)
         if (!m_player.Anim.GetCurrentAnimatorStateInfo(0).IsName("Player_ChargeSpell")
             && !m_player.Anim.GetCurrentAnimatorStateInfo(0).IsName("Player_SpellAttack")
-            && m_player.MeleeAttackAction.IsPressed())
+            && m_player.MeleeAttackAction.IsPressed() && !GameManager.Instance.IsTryPause())
         {
             m_player.StateMach.ChangeState(m_player.StateMach.StateDic[EState.MeleeAttack]);
         }

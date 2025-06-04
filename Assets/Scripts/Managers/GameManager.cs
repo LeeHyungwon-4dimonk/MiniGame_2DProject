@@ -15,6 +15,7 @@ public class GameManager : Singleton<GameManager>
     private static bool m_GameOver = false;
     private static bool m_GameClear = false;
     private static bool m_GamePaused = false;
+    private static bool m_TryPause = false;
 
     private void Awake() => Init();
 
@@ -123,6 +124,16 @@ public class GameManager : Singleton<GameManager>
     }
 
     #endregion
+
+    public void TryPause(bool isPause)
+    {
+        m_TryPause = isPause;
+    }
+
+    public bool IsTryPause()
+    {
+        return m_TryPause;
+    }
 
     #region Score
 
