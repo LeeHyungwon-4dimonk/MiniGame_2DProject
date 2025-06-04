@@ -45,7 +45,7 @@ public class PlayerState : BaseState
             && m_player.RangeAttackAction.IsPressed() && GameManager.Instance.GetCoolTime() < 0
             && GameManager.Instance.GetCurMP() > 0)
         {
-            GameManager.Instance.SetCoolTime(3);
+            GameManager.Instance.SetCoolTime(m_player.SpellCoolTime);
             m_player.StateMach.ChangeState(m_player.StateMach.StateDic[EState.Charge]);
         }
 
@@ -234,7 +234,7 @@ public class Player_MeleeAttack : PlayerState
         m_player.MeleeAttackDelay += Time.deltaTime;
 
         // 공격 애니메이션 출력 후 대기 상태로 전환
-        if (m_player.MeleeAttackDelay > 0.8)
+        if (m_player.MeleeAttackDelay > m_player.MeleeAttackMotionDelay)
         {
             m_player.MeleeAttackDelay = 0;
             m_player.StateMach.ChangeState(m_player.StateMach.StateDic[EState.Idle]);            
@@ -305,10 +305,10 @@ public class Player_RangeAttack : PlayerState
 
         // 스펠 공격 애니메이션이 출력된 후
         // 마나를 1 소모 후 대기 상태로 전환
-        if (m_player.RangeAttackDelay > 0.4f)
+        if (m_player.RangeAttackDelay > m_player.RangedAttackMotionDelay)
         {            
             m_player.RangeAttackDelay = 0;
-            GameManager.Instance.UseMp(1);
+            GameManager.Instance.UseMp(m_player.ManaConsumption);
             m_player.StateMach.ChangeState(m_player.StateMach.StateDic[EState.Idle]);
         }
     }

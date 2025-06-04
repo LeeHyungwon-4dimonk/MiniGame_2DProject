@@ -191,6 +191,10 @@ MonoBehaviour:
   JumpPow: 20
   m_playerMeleeAttack: 3
   m_playerAttackRange: 1.2
+  SpellCoolTime: 3
+  ManaConsumption: 1
+  MeleeAttackMotionDelay: 0.8
+  RangedAttackMotionDelay: 0.4
   m_layerMask:
     serializedVersion: 2
     m_Bits: 2560

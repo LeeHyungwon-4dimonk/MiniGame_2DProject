@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour, IDamageable
 {
     // 밸런스용 변수들
-
+    [Header("Player Balance")]
     // 플레이어 이동 속도(밸런싱)
     [SerializeField] public float MoveSpeed;
     // 플레이어 점프력(밸런싱)
@@ -16,7 +16,18 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private int m_playerMeleeAttack;
     // 플레이어 근접공격 범위(밸런싱)
     [SerializeField] private float m_playerAttackRange;
+    // 플레이어 스펠 공격 쿨타임(밸런싱)
+    [SerializeField] public float SpellCoolTime;
+    // 플레이어 스펠 마나 소모량(밸런싱)
+    [SerializeField] public int ManaConsumption;
 
+    [Header("Animation Delay")]
+    // 플레이어 공격 애니메이션 출력 딜레이
+    [SerializeField] public float MeleeAttackMotionDelay;
+    // 플레이어 스펠 공격 애니메이션 출력 딜레이
+    [SerializeField] public float RangedAttackMotionDelay;
+
+    [Header("Attack Target")]
     // 플레이어 타겟
     [SerializeField] private LayerMask m_layerMask;
 

@@ -170,7 +170,7 @@ public class GameManager : Singleton<GameManager>
     /// 플레이어 쿨타임 설정(시간)
     /// </summary>
     /// <param name="time"></param>
-    public void SetCoolTime(int time)
+    public void SetCoolTime(float time)
     {
         m_playerSpellCoolTime = time;
     }
